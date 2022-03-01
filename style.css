@@ -24,3 +24,13 @@ header h1 {
   align-self: end;
   margin: 0;
 }
+
+footer  {
+  text-align: center;
+  margin-top: auto;
+  padding: 5px;
+}
+
+footer img  {
+  height: 2.5rem;
+}
