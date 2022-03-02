@@ -4,8 +4,10 @@ const title = document.getElementById('title');
 const author = document.getElementById('author');
 const pages = document.getElementById('pages');
 const read = document.getElementById('read');
+const table = document.getElementById('table');
 
 let myLibrary = [];
+let bookCounter = 0;
 let newTitle = '';
 let newAuthor = '';
 let newPages = '';
@@ -26,7 +28,33 @@ function book(title, author, pages, read) {
 
 function addBookToLibrary() {
   newBook = new book(newTitle, newAuthor, newPages, newRead);
-  myLibrary.push(newBook)
+  myLibrary.push(newBook);
+  
+  // let tableRow = table.insertRow(-1);
+  // let cell1 = tableRow.insertCell(0);
+  // let cell2 = tableRow.insertCell(1);
+  // let cell3 = tableRow.insertCell(2);
+  // let cell4 = tableRow.insertCell(3);
+  // let cell5 = tableRow.insertCell(4);
+  // cell1.textContent = myLibrary[bookCounter].title;
+  // cell2.textContent = myLibrary[bookCounter].author;
+  // cell3.textContent = myLibrary[bookCounter].pages;
+  // cell4.textContent = myLibrary[bookCounter].read;
+
+  for(i = bookCounter; i < myLibrary.length; i++) {
+    let tableRow = table.insertRow(-1);
+    let cell1 = tableRow.insertCell(0);
+    let cell2 = tableRow.insertCell(1);
+    let cell3 = tableRow.insertCell(2);
+    let cell4 = tableRow.insertCell(3);
+    let cell5 = tableRow.insertCell(4);
+    cell1.textContent = myLibrary[i].title;
+    cell2.textContent = myLibrary[i].author;
+    cell3.textContent = myLibrary[i].pages;
+    cell4.textContent = myLibrary[i].read;
+
+    bookCounter += 1;
+  }
 }
 
 addBtn.addEventListener('click', () => {
@@ -38,22 +66,6 @@ addBtn.addEventListener('click', () => {
   const form = document.getElementById('form');
   form.style.visibility = "visible";
 })
-
-const formData = new FormData(document.querySelector('form'));
-console.log(formData);
-
-// function handleSubmit(e) {
-//   e.preventDefault();
-//   const formData = new FormData(e.target);
-//   const formProps = Object.fromEntries(formData);
-// }
-
-const check = (e) => {
-  const form = new FormData(e.target);
-  const title = form.get("title");
-  console.log(title);
-  return false
-};
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -74,4 +86,3 @@ const book3 = new book('Psycho-Cybernetics', 'Maxwell Maltz', 336, true);
 myLibrary.push(book1);
 myLibrary.push(book2);
 myLibrary.push(book3);
-// console.log(myLibrary)
