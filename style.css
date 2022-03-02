@@ -36,7 +36,8 @@ header h1 {
 }
 
 main  {
-  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 footer  {
@@ -108,8 +109,6 @@ form  {
   width: 2.5rem;
   border: none;
   font-size: 2rem;
-  position: absolute;
-  left: 50%;
   margin-top: 10px;
 }
 
