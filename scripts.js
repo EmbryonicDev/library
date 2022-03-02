@@ -22,3 +22,13 @@ addBtn.addEventListener('click', () => {
   const form = document.getElementById('form');
   form.style.visibility = "visible";
 })
+
+// Dummy Books
+const book1 = new book('Atlas Shrugged', 'Ayan Rand', 1853, true);
+const book2 = new book('The Unbound Soul', 'Richard L. Haight', 251, true);
+const book3 = new book('Psycho-Cybernetics', 'Maxwell Maltz', 336, true);
+
+myLibrary.push(book1);
+myLibrary.push(book2);
+myLibrary.push(book3);
+console.log(myLibrary)
