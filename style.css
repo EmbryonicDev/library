@@ -40,17 +40,6 @@ main  {
   flex-direction: column;
 }
 
-footer  {
-  text-align: center;
-  margin-top: auto;
-  padding: 5px;
-  background-color: var(--colorSlate200);
-}
-
-footer img  {
-  height: 2.5rem;
-}
-
 /* Minimal table styling */
 table {
   margin: auto;
@@ -144,4 +133,15 @@ button  {
   color: white;
   border-radius: 8px;
   font-weight: 700;
+}
+
+footer  {
+  text-align: center;
+  margin-top: auto;
+  padding: 5px;
+  background-color: var(--colorSlate200);
+}
+
+footer img  {
+  height: 2.5rem;
 }
