@@ -1,5 +1,7 @@
 :root {
+  --colorSlate100: #f1f5f9;
   --colorSlate200: #e2e8f0;
+  --colorSlate400: #94a3b8;
 }
 body  {
   height: 100vh;
@@ -33,6 +35,10 @@ header h1 {
   margin: 0;
 }
 
+main  {
+  position: relative;
+}
+
 footer  {
   text-align: center;
   margin-top: auto;
@@ -44,6 +50,7 @@ footer img  {
   height: 2.5rem;
 }
 
+/* Minimal table styling */
 table {
   margin: auto;
   border-collapse: collapse;
@@ -75,4 +82,47 @@ tr:nth-child(odd) td {
 
 caption {
   padding: 10px;
+}
+
+form  {
+  position: absolute;
+  top: 10%;
+  right: 40%;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  /* border: solid black; */
+  margin: auto;
+  align-items: end;
+  width: fit-content;
+  background-color: var(--colorSlate100);
+  border-radius: 8px;
+  box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.2);
+  /* display: none; */
+}
+
+/* Form heading */
+form > div:first-child  {
+  align-self: center;
+  font-weight: 700;
+}
+
+input {
+  margin-top: 20px;
+  width: 350px;
+}
+
+/* Read checkbox */
+#read {
+  width: max-content;
+  margin-right: 338px;
+}
+
+button  {
+  align-self: center;
+  padding: 5px;
+  background-color: var(--colorSlate400);
+  color: white;
+  border-radius: 8px;
+  font-weight: 700;
 }
