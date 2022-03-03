@@ -38,7 +38,8 @@ function addBookToLibrary() {
 
 function populateTable() {
   for(i = table.rows.length -1; i < myLibrary.length; i++)  {
-  let tableRow = table.insertRow(-1);
+    let tableRow = table.insertRow(-1);
+    tableRow.dataset.index = [i];
     let cell1 = tableRow.insertCell(0);
     let cell2 = tableRow.insertCell(1);
     let cell3 = tableRow.insertCell(2);
@@ -48,11 +49,12 @@ function populateTable() {
     cell2.textContent = myLibrary[i].author;
     cell3.textContent = myLibrary[i].pages;
     cell4.textContent = myLibrary[i].read;
-    const deleteBtn = document.createElement('input');
-    deleteBtn.type = "button";
-    deleteBtn.className = "deleteBtn";
-    deleteBtn.value = "Delete"
-    cell5.appendChild(deleteBtn);
+    let button = document.createElement('input');
+    button.type = "button";
+    button.className = "deleteBtn";
+    button.value = "Delete"
+    button.dataset.index = [i];
+    cell5.appendChild(button);
   }
 }
 
