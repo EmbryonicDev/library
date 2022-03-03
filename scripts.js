@@ -1,9 +1,5 @@
 const addBtn = document.getElementById('addBtn');
 const form = document.getElementById('form');
-// const title = document.getElementById('title');
-// const author = document.getElementById('author');
-// const pages = document.getElementById('pages');
-// const read = document.getElementById('read');
 const table = document.getElementById('table');
 
 let myLibrary = JSON.parse(localStorage.getItem("myLibrary")) || [];
