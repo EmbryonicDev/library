@@ -80,7 +80,7 @@ form  {
   position: absolute;
   align-self: center;
   top: 60%;
-  border: solid #475569;
+  border: solid var(--colorSlate600);
   padding: 15px;
   display: flex;
   flex-direction: column;
