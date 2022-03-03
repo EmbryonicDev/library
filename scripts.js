@@ -63,7 +63,6 @@ addBtn.addEventListener('click', () => {
   author.value = '';
   pages.value = '';
   read.checked = false;
-  const form = document.getElementById('form');
   form.style.visibility = "visible";
 })
 
