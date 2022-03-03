@@ -59,13 +59,11 @@ function addBookToLibrary() {
 }
 
 addBtn.addEventListener('click', () => {
-  console.log("clicked");
   form.style.visibility = "visible";
   clearForm();
 })
 
 cancelBtn.addEventListener('click', () => {
-  console.log("Cancel clicked");
   form.style.visibility = "hidden";
   clearForm();
 })
@@ -85,5 +83,4 @@ form.addEventListener('submit', (e) => {
   newPages = pages.value;
   newRead = read.value;
   addBookToLibrary();
-  console.log(myLibrary);
 })
