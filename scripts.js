@@ -1,6 +1,7 @@
 const addBtn = document.getElementById('addBtn');
 const form = document.getElementById('form');
 const table = document.getElementById('table');
+const cancelBtn = document.getElementById('cancelBtn')
 
 let myLibrary = JSON.parse(localStorage.getItem("myLibrary")) || [];
 let newTitle = '';
@@ -64,6 +65,15 @@ addBtn.addEventListener('click', () => {
   pages.value = '';
   read.checked = false;
   form.style.visibility = "visible";
+})
+
+cancelBtn.addEventListener('click', () => {
+  console.log("Cancel clicked");
+  title.value = '';
+  author.value = '';
+  pages.value = '';
+  read.checked = false;
+  form.style.visibility = "hidden";
 })
 
 form.addEventListener('submit', (e) => {
