@@ -60,21 +60,22 @@ function addBookToLibrary() {
 
 addBtn.addEventListener('click', () => {
   console.log("clicked");
-  title.value = '';
-  author.value = '';
-  pages.value = '';
-  read.checked = false;
   form.style.visibility = "visible";
+  clearForm();
 })
 
 cancelBtn.addEventListener('click', () => {
   console.log("Cancel clicked");
+  form.style.visibility = "hidden";
+  clearForm();
+})
+
+function clearForm()  {
   title.value = '';
   author.value = '';
   pages.value = '';
   read.checked = false;
-  form.style.visibility = "hidden";
-})
+}
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
