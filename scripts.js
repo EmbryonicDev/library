@@ -6,13 +6,14 @@ const pages = document.getElementById('pages');
 const read = document.getElementById('read');
 const table = document.getElementById('table');
 
-let myLibrary = [];
-let bookCounter = 0;
+let myLibrary = JSON.parse(localStorage.getItem("myLibrary")) || [];
 let newTitle = '';
 let newAuthor = '';
 let newPages = '';
 let newRead = '';
 let newBook = '';
+
+// localStorage.clear();
 
 // Object constructor
 function book(title, author, pages, read) {
@@ -29,19 +30,9 @@ function book(title, author, pages, read) {
 function addBookToLibrary() {
   newBook = new book(newTitle, newAuthor, newPages, newRead);
   myLibrary.push(newBook);
-  
-  // let tableRow = table.insertRow(-1);
-  // let cell1 = tableRow.insertCell(0);
-  // let cell2 = tableRow.insertCell(1);
-  // let cell3 = tableRow.insertCell(2);
-  // let cell4 = tableRow.insertCell(3);
-  // let cell5 = tableRow.insertCell(4);
-  // cell1.textContent = myLibrary[bookCounter].title;
-  // cell2.textContent = myLibrary[bookCounter].author;
-  // cell3.textContent = myLibrary[bookCounter].pages;
-  // cell4.textContent = myLibrary[bookCounter].read;
+  localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
 
-  for(i = bookCounter; i < myLibrary.length; i++) {
+  for(i = table.rows.length -1; i < myLibrary.length; i++) {
     let tableRow = table.insertRow(-1);
     let cell1 = tableRow.insertCell(0);
     let cell2 = tableRow.insertCell(1);
@@ -52,8 +43,6 @@ function addBookToLibrary() {
     cell2.textContent = myLibrary[i].author;
     cell3.textContent = myLibrary[i].pages;
     cell4.textContent = myLibrary[i].read;
-
-    bookCounter += 1;
   }
 }
 
@@ -77,12 +66,3 @@ form.addEventListener('submit', (e) => {
   addBookToLibrary();
   console.log(myLibrary);
 })
-
-// Dummy Books
-const book1 = new book('Atlas Shrugged', 'Ayan Rand', 1853, true);
-const book2 = new book('The Unbound Soul', 'Richard L. Haight', 251, true);
-const book3 = new book('Psycho-Cybernetics', 'Maxwell Maltz', 336, true);
-
-myLibrary.push(book1);
-myLibrary.push(book2);
-myLibrary.push(book3);
