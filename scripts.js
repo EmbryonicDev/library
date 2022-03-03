@@ -27,6 +27,21 @@ function book(title, author, pages, read) {
   }
 }
 
+if(myLibrary.length > table.rows.length -1) {
+  for(i = table.rows.length -1; i < myLibrary.length; i++) {
+    let tableRow = table.insertRow(-1);
+    let cell1 = tableRow.insertCell(0);
+    let cell2 = tableRow.insertCell(1);
+    let cell3 = tableRow.insertCell(2);
+    let cell4 = tableRow.insertCell(3);
+    let cell5 = tableRow.insertCell(4);
+    cell1.textContent = myLibrary[i].title;
+    cell2.textContent = myLibrary[i].author;
+    cell3.textContent = myLibrary[i].pages;
+    cell4.textContent = myLibrary[i].read;
+  }
+}
+
 function addBookToLibrary() {
   newBook = new book(newTitle, newAuthor, newPages, newRead);
   myLibrary.push(newBook);
