@@ -40,7 +40,7 @@ if(myLibrary.length > table.rows.length -1) {
 }
 
 function addBookToLibrary() {
-  newBook = new book(newTitle, newAuthor, newPages, newRead);
+  newBook = new book(title.value, author.value, pages.value, read.value);
   myLibrary.push(newBook);
   localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
 
@@ -78,9 +78,5 @@ function clearForm()  {
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   form.style.visibility = 'hidden';
-  newTitle = title.value;
-  newAuthor = author.value;
-  newPages = pages.value;
-  newRead = read.value;
   addBookToLibrary();
 })
