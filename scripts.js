@@ -24,28 +24,21 @@ function book(title, author, pages, read) {
   }
 }
 
+// Adds books in myLibrary from local storage
 if(myLibrary.length > table.rows.length -1) {
-  for(i = table.rows.length -1; i < myLibrary.length; i++) {
-    let tableRow = table.insertRow(-1);
-    let cell1 = tableRow.insertCell(0);
-    let cell2 = tableRow.insertCell(1);
-    let cell3 = tableRow.insertCell(2);
-    let cell4 = tableRow.insertCell(3);
-    let cell5 = tableRow.insertCell(4);
-    cell1.textContent = myLibrary[i].title;
-    cell2.textContent = myLibrary[i].author;
-    cell3.textContent = myLibrary[i].pages;
-    cell4.textContent = myLibrary[i].read;
-  }
+    populateTable();
 }
 
 function addBookToLibrary() {
   newBook = new book(title.value, author.value, pages.value, read.value);
   myLibrary.push(newBook);
   localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+  populateTable();
+}
 
-  for(i = table.rows.length -1; i < myLibrary.length; i++) {
-    let tableRow = table.insertRow(-1);
+function populateTable() {
+  for(i = table.rows.length -1; i < myLibrary.length; i++)  {
+  let tableRow = table.insertRow(-1);
     let cell1 = tableRow.insertCell(0);
     let cell2 = tableRow.insertCell(1);
     let cell3 = tableRow.insertCell(2);
@@ -55,6 +48,11 @@ function addBookToLibrary() {
     cell2.textContent = myLibrary[i].author;
     cell3.textContent = myLibrary[i].pages;
     cell4.textContent = myLibrary[i].read;
+    const deleteBtn = document.createElement('input');
+    deleteBtn.type = "button";
+    deleteBtn.className = "deleteBtn";
+    deleteBtn.value = "Delete"
+    cell5.appendChild(deleteBtn);
   }
 }
 

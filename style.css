@@ -129,13 +129,22 @@ input {
   margin-right: 338px;
 }
 
-button  {
+button,
+.deleteBtn {
   align-self: center;
   padding: 5px;
   background-color: var(--colorSlate400);
   color: white;
   border-radius: 8px;
   font-weight: 700;
+}
+
+.deleteBtn  {
+  width: max-content;
+  background-color: #ef4444;
+  margin: auto;
+  border: solid var(--colorSlate600);
+  
 }
 
 footer  {
