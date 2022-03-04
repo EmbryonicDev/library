@@ -64,6 +64,10 @@ function populateTable() {
     if(myLibrary[i].read === 'yes') {
       checkbox.checked = true;
     } 
+    checkbox.onchange = function() {
+      bookTag = parseInt(tableRow.dataset.bookTag);
+      updateReadStatus();
+    }
     cell4.appendChild(checkbox);
 
     let button = document.createElement('input');
@@ -130,4 +134,19 @@ function addDummyBooks()  {
   myLibrary.push(book6);
   myLibrary.push(book7);
   myLibrary.push(book8);
+}
+
+function updateReadStatus() {
+  const newArr = myLibrary.map(obj => {
+    if(obj.title === myLibrary[bookTag].title)  {
+      if(myLibrary[bookTag].read == 'yes') {
+        return {...obj, read: "no"};
+      } else if(myLibrary[bookTag].read =='no')  {
+        return {...obj, read: "yes"}
+      }
+    }
+    return obj;
+  })
+  myLibrary = newArr;
+  localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
 }
