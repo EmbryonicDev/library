@@ -46,7 +46,6 @@ function resetBookTag() {
 }
 
 function populateTable() {
-  localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
     for(i = table.rows.length - 1; i < myLibrary.length; i++) {
     let tableRow = table.insertRow(-1);
     tableRow.dataset.bookTag = [i];
