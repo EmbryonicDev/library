@@ -2,6 +2,7 @@ const addBtn = document.getElementById('addBtn');
 const form = document.getElementById('form');
 const table = document.getElementById('table');
 const cancelBtn = document.getElementById('cancelBtn');
+const formCheckbox = document.getElementById('read');
 
 let myLibrary = JSON.parse(localStorage.getItem("myLibrary")) || [];
 let newTitle = '';
@@ -54,11 +55,20 @@ function populateTable() {
     let cell3 = tableRow.insertCell(2);
     let cell4 = tableRow.insertCell(3);
     let cell5 = tableRow.insertCell(4);
-    let button = document.createElement('input');
     cell1.textContent = myLibrary[i].title;
     cell2.textContent = myLibrary[i].author;
     cell3.textContent = myLibrary[i].pages;
-    cell4.textContent = myLibrary[i].read;
+    
+    let checkbox = document.createElement('input');
+    checkbox.type = "checkbox";
+    checkbox.className = "tableCheckbox";
+    // ↓ Make sure read status is updated after refresh ↓
+    if(myLibrary[i].read === 'yes') {
+      checkbox.checked = true;
+    } 
+    cell4.appendChild(checkbox);
+
+    let button = document.createElement('input');
     button.type = "button";
     button.className = "deleteBtn";
     button.value = "Delete"
@@ -67,6 +77,7 @@ function populateTable() {
       deleteBook();
     }
     cell5.appendChild(button);
+
     localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
   }
 }
@@ -85,7 +96,8 @@ function clearForm()  {
   title.value = '';
   author.value = '';
   pages.value = '';
-  read.checked = false;
+  read.checked = true;
+  read.value = 'yes';
 }
 
 form.addEventListener('submit', (e) => {
@@ -94,15 +106,23 @@ form.addEventListener('submit', (e) => {
   addBookToLibrary();
 });
 
+formCheckbox.addEventListener('change', e => {
+  if(e.target.checked)  {
+    e.target.value = 'yes';
+  } else{
+    e.target.value = 'no';
+  }
+})
+
 function addDummyBooks()  {
-  const book1 = new book('Atlas Shrugged', 'Ayan Rand', 1853, true);
-  const book2 = new book('The Unbound Soul', 'Richard L. Haight', 251, true);
-  const book3 = new book('Psycho-Cybernetics', 'Maxwell Maltz', 336, true);
-  const book4 = new book('Fountainhead', 'Ayan Rand', 961, true);
-  const book5 = new book('Book 5', 'Ayan Rand', 1853, true);
-  const book6 = new book('Book 6', 'Richard L. Haight', 251, true);
-  const book7 = new book('Book 7', 'Maxwell Maltz', 336, true);
-  const book8 = new book('Book 8', 'Ayan Rand', 961, true);
+  const book1 = new book('Atlas Shrugged', 'Ayan Rand', 1853, 'yes');
+  const book2 = new book('The Unbound Soul', 'Richard L. Haight', 251, 'yes');
+  const book3 = new book('Psycho-Cybernetics', 'Maxwell Maltz', 336, 'yes');
+  const book4 = new book('Fountainhead', 'Ayan Rand', 961, 'yes');
+  const book5 = new book('Book 5', 'Ayan Rand', 1853, 'no');
+  const book6 = new book('Book 6', 'Richard L. Haight', 251, 'yes');
+  const book7 = new book('Book 7', 'Maxwell Maltz', 336, 'no');
+  const book8 = new book('Book 8', 'Ayan Rand', 961, 'no');
   
   myLibrary.push(book1);
   myLibrary.push(book2);

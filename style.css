@@ -76,6 +76,12 @@ caption {
   padding: 10px;
 }
 
+.tableCheckbox  {
+  padding: 0;
+  margin: 0;
+  width: max-content;
+}
+
 form  {
   position: absolute;
   align-self: center;
