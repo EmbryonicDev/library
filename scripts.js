@@ -5,10 +5,6 @@ const cancelBtn = document.getElementById('cancelBtn');
 const formCheckbox = document.getElementById('read');
 
 let myLibrary = JSON.parse(localStorage.getItem("myLibrary")) || [];
-let newTitle = '';
-let newAuthor = '';
-let newPages = '';
-let newRead = '';
 let newBook = '';
 
 // addDummyBooks();
