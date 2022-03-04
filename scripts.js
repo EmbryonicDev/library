@@ -38,7 +38,15 @@ function addBookToLibrary() {
 function deleteBook() {
   table.deleteRow(bookTag + 1);
   myLibrary.splice(bookTag, 1);
+  resetBookTag();
   localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+}
+
+function resetBookTag() {
+  for(i = 0; i < myLibrary.length; i++)  {
+    let tableRow = table.rows[i + 1];
+    tableRow.dataset.bookTag = [i];
+  }
 }
 
 function populateTable() {
