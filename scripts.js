@@ -10,7 +10,7 @@ let newPages = '';
 let newRead = '';
 let newBook = '';
 
-// localStorage.clear();
+// addDummyBooks();
 
 // Object constructor
 function book(title, author, pages, read) {
@@ -26,7 +26,7 @@ function book(title, author, pages, read) {
 
 // Adds books in myLibrary from local storage
 if(myLibrary.length > table.rows.length -1) {
-    populateTable();
+  populateTable();
 }
 
 function addBookToLibrary() {
@@ -98,3 +98,23 @@ form.addEventListener('submit', (e) => {
   form.style.visibility = 'hidden';
   addBookToLibrary();
 });
+
+function addDummyBooks()  {
+  const book1 = new book('Atlas Shrugged', 'Ayan Rand', 1853, true);
+  const book2 = new book('The Unbound Soul', 'Richard L. Haight', 251, true);
+  const book3 = new book('Psycho-Cybernetics', 'Maxwell Maltz', 336, true);
+  const book4 = new book('Fountainhead', 'Ayan Rand', 961, true);
+  const book5 = new book('Book 5', 'Ayan Rand', 1853, true);
+  const book6 = new book('Book 6', 'Richard L. Haight', 251, true);
+  const book7 = new book('Book 7', 'Maxwell Maltz', 336, true);
+  const book8 = new book('Book 8', 'Ayan Rand', 961, true);
+  
+  myLibrary.push(book1);
+  myLibrary.push(book2);
+  myLibrary.push(book3);
+  myLibrary.push(book4);
+  myLibrary.push(book5);
+  myLibrary.push(book6);
+  myLibrary.push(book7);
+  myLibrary.push(book8);
+}
