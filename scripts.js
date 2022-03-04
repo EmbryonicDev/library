@@ -1,7 +1,7 @@
 const addBtn = document.getElementById('addBtn');
 const form = document.getElementById('form');
 const table = document.getElementById('table');
-const cancelBtn = document.getElementById('cancelBtn')
+const cancelBtn = document.getElementById('cancelBtn');
 
 let myLibrary = JSON.parse(localStorage.getItem("myLibrary")) || [];
 let newTitle = '';
@@ -32,29 +32,39 @@ if(myLibrary.length > table.rows.length -1) {
 function addBookToLibrary() {
   newBook = new book(title.value, author.value, pages.value, read.value);
   myLibrary.push(newBook);
-  localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
   populateTable();
 }
 
+function deleteBook() {
+  table.deleteRow(bookTag + 1);
+  myLibrary.splice(bookTag, 1);
+  localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+}
+
 function populateTable() {
-  for(i = table.rows.length -1; i < myLibrary.length; i++)  {
+  localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+    for(i = table.rows.length - 1; i < myLibrary.length; i++) {
     let tableRow = table.insertRow(-1);
-    tableRow.dataset.index = [i];
+    tableRow.dataset.bookTag = [i];
     let cell1 = tableRow.insertCell(0);
     let cell2 = tableRow.insertCell(1);
     let cell3 = tableRow.insertCell(2);
     let cell4 = tableRow.insertCell(3);
     let cell5 = tableRow.insertCell(4);
+    let button = document.createElement('input');
     cell1.textContent = myLibrary[i].title;
     cell2.textContent = myLibrary[i].author;
     cell3.textContent = myLibrary[i].pages;
     cell4.textContent = myLibrary[i].read;
-    let button = document.createElement('input');
     button.type = "button";
     button.className = "deleteBtn";
     button.value = "Delete"
-    button.dataset.index = [i];
+    button.onclick = function() {
+      bookTag = parseInt(tableRow.dataset.bookTag);
+      deleteBook();
+    }
     cell5.appendChild(button);
+    localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
   }
 }
 
@@ -79,4 +89,4 @@ form.addEventListener('submit', (e) => {
   e.preventDefault();
   form.style.visibility = 'hidden';
   addBookToLibrary();
-})
+});
