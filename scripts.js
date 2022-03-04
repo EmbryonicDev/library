@@ -8,6 +8,8 @@ const tableCheckbox = document.querySelector('.tableCheckbox');
 
 let myLibrary = JSON.parse(localStorage.getItem("myLibrary")) || [];
 let newBook = '';
+let totalRead = '';
+let totalUnread = '';
 
 // addDummyBooks();
 
@@ -149,4 +151,12 @@ function updateReadStatus() {
   })
   myLibrary = newArr;
   localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+  totalBooksRead();
+}
+
+function totalBooksRead() {
+  totalRead = (document.querySelectorAll('input[type="checkbox"]:checked').length);
+  console.log("total books read: " + totalRead);
+  totalUnread = myLibrary.length - totalRead;
+  console.log('total books unread ' + totalUnread);
 }
