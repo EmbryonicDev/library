@@ -18,10 +18,6 @@ function book(title, author, pages, read) {
   this.author = author
   this.pages = pages
   this.read = read
-  
-  this.bookInfo = function() {
-    return(`${this.title} by ${this.author} , ${this.pages} pages, ${this.read}`);
-  }
 }
 
 // Adds books in myLibrary from local storage
