@@ -1,8 +1,10 @@
+const mainContainer = document.getElementById('mainContainer');
 const addBtn = document.getElementById('addBtn');
 const form = document.getElementById('form');
 const table = document.getElementById('table');
 const cancelBtn = document.getElementById('cancelBtn');
 const formCheckbox = document.getElementById('formCheckbox');
+const tableCheckbox = document.querySelector('.tableCheckbox');
 
 let myLibrary = JSON.parse(localStorage.getItem("myLibrary")) || [];
 let newBook = '';
@@ -23,7 +25,7 @@ if(myLibrary.length > table.rows.length -1) {
 }
 
 function addBookToLibrary() {
-  newBook = new book(title.value, author.value, pages.value, read.value);
+  newBook = new book(title.value, author.value, pages.value, formCheckbox.value);
   myLibrary.push(newBook);
   populateTable();
 }
@@ -92,8 +94,8 @@ function clearForm()  {
   title.value = '';
   author.value = '';
   pages.value = '';
-  read.checked = true;
-  read.value = 'yes';
+  formCheckbox.checked = true;
+  formCheckbox.value = 'yes';
 }
 
 form.addEventListener('submit', (e) => {
