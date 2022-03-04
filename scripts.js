@@ -2,7 +2,7 @@ const addBtn = document.getElementById('addBtn');
 const form = document.getElementById('form');
 const table = document.getElementById('table');
 const cancelBtn = document.getElementById('cancelBtn');
-const formCheckbox = document.getElementById('read');
+const formCheckbox = document.getElementById('formCheckbox');
 
 let myLibrary = JSON.parse(localStorage.getItem("myLibrary")) || [];
 let newBook = '';

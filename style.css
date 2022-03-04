@@ -130,7 +130,7 @@ input {
 }
 
 /* Read checkbox */
-#read {
+#formCheckbox {
   width: max-content;
   margin-right: 338px;
 }
