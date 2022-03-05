@@ -10,6 +10,7 @@ let myLibrary = JSON.parse(localStorage.getItem("myLibrary")) || [];
 let newBook = '';
 let totalRead = '';
 let totalUnread = '';
+let buildSummaryCount = '';
 
 // addDummyBooks();
 
@@ -30,13 +31,15 @@ function addBookToLibrary() {
   newBook = new book(title.value, author.value, pages.value, formCheckbox.value);
   myLibrary.push(newBook);
   populateTable();
+  location.reload();
 }
 
 function deleteBook() {
   table.deleteRow(bookTag + 1);
   myLibrary.splice(bookTag, 1);
-  resetBookTag();
   localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+  resetBookTag();
+  location.reload();
 }
 
 function resetBookTag() {
@@ -160,3 +163,32 @@ function totalBooksRead() {
   totalUnread = myLibrary.length - totalRead;
   console.log('total books unread ' + totalUnread);
 }
+
+function buildSummary() {
+  totalBooksRead();
+  if(buildSummaryCount < 1) {
+    const summaryDiv = document.createElement('div');
+    summaryDiv.classList.add('summaryDiv');
+    mainContainer.insertBefore(summaryDiv, mainContainer.firstChild);
+    
+    const summaryTotal = document.createElement('p');
+    summaryTotal.textContent = "Total Books in Library: " + (totalUnread + totalRead);
+    summaryTotal.classList.add('summaryTotal');
+    summaryDiv.append(summaryTotal);
+    
+    const summaryRead = document.createElement('p');
+    summaryRead.classList.add('summaryRead');
+    summaryRead.textContent = "Books Read: " + totalRead;
+    summaryDiv.append(summaryRead);
+    
+    const summaryUnread = document.createElement('p');
+    summaryUnread.classList.add('summaryUnread');
+    summaryUnread.textContent = "Books Unread: " + totalUnread;
+    summaryDiv.append(summaryUnread);
+  }
+}
+
+if(myLibrary.length > 0) {
+  buildSummary();
+  buildSummaryCount += 1;
+};
