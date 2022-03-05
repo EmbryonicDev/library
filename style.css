@@ -107,7 +107,7 @@ caption {
 form  {
   position: absolute;
   align-self: center;
-  top: 60%;
+  position: fixed;
   border: solid var(--colorSlate600);
   padding: 15px;
   display: flex;
