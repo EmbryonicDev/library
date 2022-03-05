@@ -155,6 +155,7 @@ function updateReadStatus() {
   myLibrary = newArr;
   localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
   totalBooksRead();
+  location.reload();
 }
 
 function totalBooksRead() {
