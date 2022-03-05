@@ -66,6 +66,13 @@ main  {
   font-size: 0.8rem;
 }
 
+/* Sticky position for table's first row */
+#table tr:first-of-type {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
 td, th {
   border: 1px solid rgb(190,190,190);
   padding: 10px 20px;
