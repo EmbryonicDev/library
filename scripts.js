@@ -58,9 +58,11 @@ function populateTable() {
     let cell3 = tableRow.insertCell(2);
     let cell4 = tableRow.insertCell(3);
     let cell5 = tableRow.insertCell(4);
-    cell1.textContent = myLibrary[i].title;
-    cell2.textContent = myLibrary[i].author;
-    cell3.textContent = myLibrary[i].pages;
+    let cell6 = tableRow.insertCell(5);
+    cell1.textContent = parseInt([i]) + 1;
+    cell2.textContent = myLibrary[i].title;
+    cell3.textContent = myLibrary[i].author;
+    cell4.textContent = myLibrary[i].pages;
     
     let checkbox = document.createElement('input');
     checkbox.type = "checkbox";
@@ -73,7 +75,7 @@ function populateTable() {
       bookTag = parseInt(tableRow.dataset.bookTag);
       updateReadStatus();
     }
-    cell4.appendChild(checkbox);
+    cell5.appendChild(checkbox);
 
     let button = document.createElement('input');
     button.type = "button";
@@ -83,7 +85,7 @@ function populateTable() {
       bookTag = parseInt(tableRow.dataset.bookTag);
       deleteBook();
     }
-    cell5.appendChild(button);
+    cell6.appendChild(button);
 
     localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
   }
