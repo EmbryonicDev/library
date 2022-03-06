@@ -5,6 +5,7 @@ const table = document.getElementById('table');
 const cancelBtn = document.getElementById('cancelBtn');
 const formCheckbox = document.getElementById('formCheckbox');
 const tableCheckbox = document.querySelector('.tableCheckbox');
+const suggestionBtn = document.getElementById('suggestionBtn');
 
 let myLibrary = JSON.parse(localStorage.getItem("myLibrary")) || [];
 let newBook = '';
@@ -23,11 +24,15 @@ function book(title, author, pages, read) {
 }
 
 // Add books from localStorage && hide table if myLibrary = 0
-if(myLibrary.length > table.rows.length -1) {
-  populateTable();
-} else if(myLibrary.length == 0) {
-  table.style.visibility = 'hidden';
+function checkLibrary()  {
+  if(myLibrary.length > table.rows.length -1) {
+    populateTable();
+  } else if(myLibrary.length == 0) {
+    table.style.visibility = 'hidden';
+  }
 }
+
+checkLibrary();
 
 function addBookToLibrary() {
   newBook = new book(title.value, author.value, pages.value, formCheckbox.value);
@@ -44,7 +49,7 @@ function deleteBook() {
   location.reload();
 }
 
-// Resets each table row's "index" (data-book-tag)
+// Resets each table row's "index" (data-book-tagk)
 function resetBookTag() {
   for(i = 0; i < myLibrary.length; i++)  {
     let tableRow = table.rows[i + 1];
@@ -97,6 +102,11 @@ function populateTable() {
 addBtn.addEventListener('click', () => {
   form.style.visibility = "visible";
   clearForm();
+})
+
+suggestionBtn.addEventListener('click', (e) => {
+  // console.log(e);
+  addDummyBooks();
 })
 
 cancelBtn.addEventListener('click', () => {
@@ -169,6 +179,9 @@ function addDummyBooks()  {
   myLibrary.push(book18);
   myLibrary.push(book19);
   myLibrary.push(book20);
+  localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+
+  checkLibrary();
 }
 
 function updateReadStatus() {
