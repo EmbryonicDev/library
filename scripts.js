@@ -22,9 +22,11 @@ function book(title, author, pages, read) {
   this.read = read
 }
 
-// Adds books in myLibrary from local storage
+// Add books from localStorage && hide table if myLibrary = 0
 if(myLibrary.length > table.rows.length -1) {
   populateTable();
+} else if(myLibrary.length == 0) {
+  table.style.visibility = 'hidden';
 }
 
 function addBookToLibrary() {
