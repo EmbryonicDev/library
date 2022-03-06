@@ -126,14 +126,27 @@ formCheckbox.addEventListener('change', e => {
 })
 
 function addDummyBooks()  {
-  const book1 = new book('Atlas Shrugged', 'Ayan Rand', 1853, 'yes');
-  const book2 = new book('The Unbound Soul', 'Richard L. Haight', 251, 'yes');
-  const book3 = new book('Psycho-Cybernetics', 'Maxwell Maltz', 336, 'yes');
-  const book4 = new book('Fountainhead', 'Ayan Rand', 961, 'yes');
-  const book5 = new book('Book 5', 'Ayan Rand', 1853, 'no');
-  const book6 = new book('Book 6', 'Richard L. Haight', 251, 'yes');
-  const book7 = new book('Book 7', 'Maxwell Maltz', 336, 'no');
-  const book8 = new book('Book 8', 'Ayan Rand', 961, 'no');
+  const book1 = new book('To Kill a Mockingbird', 'Harper Lee', '281', 'no')
+  const book2 = new book('The Great Gatsby', ' F. Scott Fitzgerald', '208', 'no')
+  const book3= new book('Ulysses', 'James Joyce', '730', 'no')
+  const book4= new book('The Catcher in the Rye', 'J.D Salinger', '277', 'no')
+  const book5= new book('Pride and Prejudice', 'Jane Austen', '432', 'no')
+  const book6= new book('Adventures of Huckleberry Finn', 'Mark Twain', '366', 'no')
+  const book7= new book('Alice’s Adventure in Wonderland', 'Lews Carroll', '1184', 'no')
+  const book8= new book('To the Lighthouse', 'Virginia Woolf', '320', 'no')
+  const book9= new book('The Sound and the Fury', 'William Faulkner', '326', 'no')
+  const book10= new book('Nineteen Eighty-four', 'George Orwell', '328', 'no')
+  const book11= new book('Great Expectations', 'Charles Dickens', '544', 'no')
+  const book12= new book('Absalom, Absalom!', 'William Faulkner', '384', 'no')
+  const book13= new book('Middlemarch', 'George Eliot', '880', 'no')
+  const book14= new book('Beloved', 'Toni Morrison', '324', 'no')
+  const book15= new book('The Invisible Man', 'Ralph Ellison', '581', 'no')
+  const book16= new book('Mrs. Dalloway', 'Virginia Woolf', '91', 'no')
+  const book17= new book('David Copperfield', 'Charles Dickens', '624', 'no')
+  const book18= new book('The Lord of the Rings', 'J.R.R Tolkien', '416', 'no')
+  const book19= new book('Frankenstein', 'Mary Shelley', '280', 'no')
+  const book20= new book('Things Fall Apart', 'Chinua Achebe', '224', 'no')
+
   
   myLibrary.push(book1);
   myLibrary.push(book2);
@@ -143,6 +156,18 @@ function addDummyBooks()  {
   myLibrary.push(book6);
   myLibrary.push(book7);
   myLibrary.push(book8);
+  myLibrary.push(book9);
+  myLibrary.push(book10);
+  myLibrary.push(book11);
+  myLibrary.push(book12);
+  myLibrary.push(book13);
+  myLibrary.push(book14);
+  myLibrary.push(book15);
+  myLibrary.push(book16);
+  myLibrary.push(book17);
+  myLibrary.push(book18);
+  myLibrary.push(book19);
+  myLibrary.push(book20);
 }
 
 function updateReadStatus() {
