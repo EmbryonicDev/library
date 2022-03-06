@@ -31,7 +31,6 @@ function checkLibrary()  {
     table.style.visibility = 'hidden';
   }
 }
-
 checkLibrary();
 
 function addBookToLibrary() {
@@ -197,19 +196,12 @@ function updateReadStatus() {
   })
   myLibrary = newArr;
   localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
-  totalBooksRead();
   location.reload();
 }
 
-function totalBooksRead() {
-  totalRead = (document.querySelectorAll('input[type="checkbox"]:checked').length);
-  console.log("total books read: " + totalRead);
-  totalUnread = myLibrary.length - totalRead;
-  console.log('total books unread ' + totalUnread);
-}
-
 function buildSummary() {
-  totalBooksRead();
+  totalRead = (document.querySelectorAll('input[type="checkbox"]:checked').length);
+  totalUnread = myLibrary.length - totalRead;
   if(buildSummaryCount < 1) {
     const summaryDiv = document.createElement('div');
     summaryDiv.classList.add('summaryDiv');
