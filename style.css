@@ -221,6 +221,9 @@ footer  {
   margin-top: auto;
   padding: 5px;
   background-color: var(--colorSlate200);
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 0;
 }
 
 footer img  {
