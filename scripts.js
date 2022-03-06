@@ -27,6 +27,8 @@ function book(title, author, pages, read) {
 function checkLibrary()  {
   if(myLibrary.length > table.rows.length -1) {
     populateTable();
+    buildSummary();
+    table.style.visibility = 'visible';
   } else if(myLibrary.length == 0) {
     table.style.visibility = 'hidden';
   }
@@ -203,6 +205,7 @@ function buildSummary() {
   totalRead = (document.querySelectorAll('input[type="checkbox"]:checked').length);
   totalUnread = myLibrary.length - totalRead;
   if(buildSummaryCount < 1) {
+    buildSummaryCount += 1;
     const summaryDiv = document.createElement('div');
     summaryDiv.classList.add('summaryDiv');
     mainContainer.insertBefore(summaryDiv, mainContainer.firstChild);
@@ -223,8 +226,3 @@ function buildSummary() {
     summaryDiv.append(summaryUnread);
   }
 }
-
-if(myLibrary.length > 0) {
-  buildSummary();
-  buildSummaryCount += 1;
-};
