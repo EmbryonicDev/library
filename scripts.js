@@ -1,11 +1,13 @@
 const mainContainer = document.getElementById('mainContainer');
+const btnContainer = document.getElementById('btnContainer');
 const addBtn = document.getElementById('addBtn');
+const suggestionBtn = document.getElementById('suggestionBtn');
+const clearAllBtn = document.getElementById('clearAllBtn');
 const form = document.getElementById('form');
 const table = document.getElementById('table');
 const cancelBtn = document.getElementById('cancelBtn');
 const formCheckbox = document.getElementById('formCheckbox');
 const tableCheckbox = document.querySelector('.tableCheckbox');
-const suggestionBtn = document.getElementById('suggestionBtn');
 
 let myLibrary = JSON.parse(localStorage.getItem("myLibrary")) || [];
 let newBook = '';
@@ -23,14 +25,17 @@ function book(title, author, pages, read) {
   this.read = read
 }
 
-// Add books from localStorage && hide table if myLibrary = 0
+// Add books from localStorage && hide table / clearAllBtn if myLibrary = 0
 function checkLibrary()  {
   if(myLibrary.length > table.rows.length -1) {
     populateTable();
     buildSummary();
     table.style.visibility = 'visible';
+    clearAllBtn.style.visibility = 'visible';
   } else if(myLibrary.length == 0) {
     table.style.visibility = 'hidden';
+    clearAllBtn.style.visibility = 'hidden';
+    clearAllBtn.style.position = 'absolute';
   }
 }
 checkLibrary();
@@ -106,8 +111,14 @@ addBtn.addEventListener('click', () => {
 })
 
 suggestionBtn.addEventListener('click', (e) => {
-  // console.log(e);
   addDummyBooks();
+})
+
+clearAllBtn.addEventListener('click', (e) => {
+  localStorage.clear();
+  buildSummaryCount = 0;
+  location.reload();
+  // console.log("all cleared");
 })
 
 cancelBtn.addEventListener('click', () => {
@@ -158,7 +169,6 @@ function addDummyBooks()  {
   const book18 = new book('The Lord of the Rings', 'J.R.R Tolkien', '416', 'no');
   const book19 = new book('Frankenstein', 'Mary Shelley', '280', 'no');
   const book20 = new book('Things Fall Apart', 'Chinua Achebe', '224', 'no');
-
   
   myLibrary.push(book1);
   myLibrary.push(book2);
@@ -182,7 +192,7 @@ function addDummyBooks()  {
   myLibrary.push(book20);
   localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
 
-  checkLibrary();
+  location.reload();
 }
 
 function updateReadStatus() {
