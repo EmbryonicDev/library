@@ -14,6 +14,10 @@ body  {
 header  {
   background-color: var(--colorSlate200);
   box-shadow: 0 6px 2px -2px rgba(0, 0, 0, 0.2);
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 /* Header heading & icon  */
@@ -71,7 +75,7 @@ main  {
 #table tr:first-of-type {
   position: -webkit-sticky;
   position: sticky;
-  top: 0;
+  top: 120px;
 }
 
 td, th {
@@ -126,7 +130,13 @@ form  {
   justify-self: center;
   align-self: center;
   display: flex;
+  justify-content: center;
+  width: 100%;
   gap: 15px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 68px;
+  background-color: white;
 }
 
 /* Add book & suggestion button */
