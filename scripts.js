@@ -16,8 +16,6 @@ let totalRead = '';
 let totalUnread = '';
 let buildSummaryCount = '';
 
-// addDummyBooks();
-
 // localStorage.clear();
 
 // Object constructor
@@ -168,8 +166,6 @@ function addDummyBooks()  {
   
   location.reload();
 }
-
-// localStorage.clear();
 
 // Updates the read-checkbox after live update
 function updateReadStatus() {
