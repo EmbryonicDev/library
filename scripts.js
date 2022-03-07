@@ -25,7 +25,7 @@ function book(title, author, pages, read) {
   this.read = read
 }
 
-// Add books from localStorage && hide table / clearAllBtn if myLibrary = 0
+// Add books from localStorage && hide table & clearAllBtn if myLibrary = 0
 function checkLibrary()  {
   if(myLibrary.length > table.rows.length -1) {
     populateTable();
@@ -105,27 +105,6 @@ function populateTable() {
   }
 }
 
-addBtn.addEventListener('click', () => {
-  form.style.visibility = "visible";
-  clearForm();
-})
-
-suggestionBtn.addEventListener('click', (e) => {
-  addDummyBooks();
-})
-
-clearAllBtn.addEventListener('click', (e) => {
-  localStorage.clear();
-  buildSummaryCount = 0;
-  location.reload();
-  // console.log("all cleared");
-})
-
-cancelBtn.addEventListener('click', () => {
-  form.style.visibility = "hidden";
-  clearForm();
-})
-
 function clearForm()  {
   title.value = '';
   author.value = '';
@@ -133,20 +112,6 @@ function clearForm()  {
   formCheckbox.checked = true;
   formCheckbox.value = 'yes';
 }
-
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  form.style.visibility = 'hidden';
-  addBookToLibrary();
-});
-
-formCheckbox.addEventListener('change', e => {
-  if(e.target.checked)  {
-    e.target.value = 'yes';
-  } else{
-    e.target.value = 'no';
-  }
-})
 
 function addDummyBooks()  {
   const book1 = new book('To Kill a Mockingbird', 'Harper Lee', '281', 'no');
@@ -195,6 +160,7 @@ function addDummyBooks()  {
   location.reload();
 }
 
+// Updates the read-checkbox after live update
 function updateReadStatus() {
   const newArr = myLibrary.map(obj => {
     if(obj.title === myLibrary[bookTag].title)  {
@@ -236,3 +202,41 @@ function buildSummary() {
     summaryDiv.append(summaryUnread);
   }
 }
+
+// Event listeners 
+// Add new book
+addBtn.addEventListener('click', () => {
+  form.style.visibility = "visible";
+  clearForm();
+})
+
+// Add up to 20 book suggestions
+suggestionBtn.addEventListener('click', (e) => {
+  addDummyBooks();
+})
+
+clearAllBtn.addEventListener('click', (e) => {
+  localStorage.clear();
+  buildSummaryCount = 0;
+  location.reload();
+})
+
+// Form cancel button
+cancelBtn.addEventListener('click', () => {
+  form.style.visibility = "hidden";
+  clearForm();
+})
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  form.style.visibility = 'hidden';
+  addBookToLibrary();
+});
+
+formCheckbox.addEventListener('change', e => {
+  if(e.target.checked)  {
+    e.target.value = 'yes';
+  } else{
+    e.target.value = 'no';
+  }
+})
