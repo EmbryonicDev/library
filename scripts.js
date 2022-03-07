@@ -10,12 +10,15 @@ const formCheckbox = document.getElementById('formCheckbox');
 const tableCheckbox = document.querySelector('.tableCheckbox');
 
 let myLibrary = JSON.parse(localStorage.getItem("myLibrary")) || [];
+let randomBookArray = JSON.parse(localStorage.getItem("randomBookArray")) || [];
 let newBook = '';
 let totalRead = '';
 let totalUnread = '';
 let buildSummaryCount = '';
 
 // addDummyBooks();
+
+// localStorage.clear();
 
 // Object constructor
 function book(title, author, pages, read) {
@@ -50,7 +53,9 @@ function addBookToLibrary() {
 function deleteBook() {
   table.deleteRow(bookTag + 1);
   myLibrary.splice(bookTag, 1);
+  randomBookArray.splice(bookTag, 1);
   localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+  localStorage.setItem("randomBookArray", JSON.stringify(randomBookArray));
   resetBookTag();
   location.reload();
 }
@@ -114,51 +119,57 @@ function clearForm()  {
 }
 
 function addDummyBooks()  {
-  const book1 = new book('To Kill a Mockingbird', 'Harper Lee', '281', 'no');
-  const book2 = new book('The Great Gatsby', ' F. Scott Fitzgerald', '208', 'no');
-  const book3 = new book('Ulysses', 'James Joyce', '730', 'no');
-  const book4 = new book('The Catcher in the Rye', 'J.D Salinger', '277', 'no');
-  const book5 = new book('Pride and Prejudice', 'Jane Austen', '432', 'no');
-  const book6 = new book('Adventures of Huckleberry Finn', 'Mark Twain', '366', 'no');
-  const book7 = new book('Alice’s Adventure in Wonderland', 'Lews Carroll', '1184', 'no');
-  const book8 = new book('To the Lighthouse', 'Virginia Woolf', '320', 'no');
-  const book9 = new book('The Sound and the Fury', 'William Faulkner', '326', 'no');
-  const book10 = new book('Nineteen Eighty-four', 'George Orwell', '328', 'no');
-  const book11 = new book('Great Expectations', 'Charles Dickens', '544', 'no');
-  const book12 = new book('Absalom, Absalom!', 'William Faulkner', '384', 'no');
-  const book13 = new book('Middlemarch', 'George Eliot', '880', 'no');
-  const book14 = new book('Beloved', 'Toni Morrison', '324', 'no');
-  const book15 = new book('The Invisible Man', 'Ralph Ellison', '581', 'no');
-  const book16 = new book('Mrs. Dalloway', 'Virginia Woolf', '91', 'no');
-  const book17 = new book('David Copperfield', 'Charles Dickens', '624', 'no');
-  const book18 = new book('The Lord of the Rings', 'J.R.R Tolkien', '416', 'no');
-  const book19 = new book('Frankenstein', 'Mary Shelley', '280', 'no');
-  const book20 = new book('Things Fall Apart', 'Chinua Achebe', '224', 'no');
-  
-  myLibrary.push(book1);
-  myLibrary.push(book2);
-  myLibrary.push(book3);
-  myLibrary.push(book4);
-  myLibrary.push(book5);
-  myLibrary.push(book6);
-  myLibrary.push(book7);
-  myLibrary.push(book8);
-  myLibrary.push(book9);
-  myLibrary.push(book10);
-  myLibrary.push(book11);
-  myLibrary.push(book12);
-  myLibrary.push(book13);
-  myLibrary.push(book14);
-  myLibrary.push(book15);
-  myLibrary.push(book16);
-  myLibrary.push(book17);
-  myLibrary.push(book18);
-  myLibrary.push(book19);
-  myLibrary.push(book20);
-  localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+  let dummyArray = [];
+  dummyArray.push(new book('To Kill a Mockingbird', 'Harper Lee', '281', 'no'));
+  dummyArray.push(new book('The Great Gatsby', ' F. Scott Fitzgerald', '208', 'no'));
+  dummyArray.push(new book('Ulysses', 'James Joyce', '730', 'no'));
+  dummyArray.push(new book('The Catcher in the Rye', 'J.D Salinger', '277', 'no'));
+  dummyArray.push(new book('Pride and Prejudice', 'Jane Austen', '432', 'no'));
+  dummyArray.push(new book('Adventures of Huckleberry Finn', 'Mark Twain', '366', 'no'));
+  dummyArray.push(new book('Alice’s Adventure in Wonderland', 'Lews Carroll', '1184', 'no'));
+  dummyArray.push(new book('To the Lighthouse', 'Virginia Woolf', '320', 'no'));
+  dummyArray.push(new book('The Sound and the Fury', 'William Faulkner', '326', 'no'));
+  dummyArray.push(new book('Nineteen Eighty-four', 'George Orwell', '328', 'no'));
+  dummyArray.push(new book('Great Expectations', 'Charles Dickens', '544', 'no'));
+  dummyArray.push(new book('Absalom, Absalom!', 'William Faulkner', '384', 'no'));
+  dummyArray.push(new book('Middlemarch', 'George Eliot', '880', 'no'));
+  dummyArray.push(new book('Beloved', 'Toni Morrison', '324', 'no'));
+  dummyArray.push(new book('The Invisible Man', 'Ralph Ellison', '581', 'no'));
+  dummyArray.push(new book('Mrs. Dalloway', 'Virginia Woolf', '91', 'no'));
+  dummyArray.push(new book('David Copperfield', 'Charles Dickens', '624', 'no'));
+  dummyArray.push(new book('The Lord of the Rings', 'J.R.R Tolkien', '416', 'no'));
+  dummyArray.push(new book('Frankenstein', 'Mary Shelley', '280', 'no'));
+  dummyArray.push(new book('Things Fall Apart', 'Chinua Achebe', '224', 'no'));
 
+  function addFiveBooks() {
+    let randomBook = dummyArray[Math.floor(Math.random()*dummyArray.length)];
+    randomBookArray.push(randomBook);
+
+    function noDuplicates(checkArray, key) {
+      return [...new Map(checkArray.map(item => [item[key], item])).values()];
+    }
+    randomBookArray = noDuplicates(randomBookArray, "title");
+    myLibrary.push(...randomBookArray);
+    myLibrary = noDuplicates(myLibrary, "title");
+  }
+
+  if(randomBookArray.length <= 4) {
+    while(randomBookArray.length <= 4) addFiveBooks();
+  } else if(randomBookArray.length > 4 && randomBookArray.length <= 9) {
+    while(randomBookArray.length <= 9) addFiveBooks();
+  } else if(randomBookArray.length > 9 && randomBookArray.length <= 14) {
+    while(randomBookArray.length <= 14) addFiveBooks();
+  } else if(randomBookArray.length > 14 && randomBookArray.length <= 19) {
+    while(randomBookArray.length <= 19) addFiveBooks();
+  }
+  
+  localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+  localStorage.setItem("randomBookArray", JSON.stringify(randomBookArray));
+  
   location.reload();
 }
+
+// localStorage.clear();
 
 // Updates the read-checkbox after live update
 function updateReadStatus() {
