@@ -137,6 +137,7 @@ form  {
   position: sticky;
   top: 68px;
   background-color: white;
+  margin-bottom: 15px;
 }
 
 /* Add book & suggestion button */
