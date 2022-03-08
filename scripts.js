@@ -27,16 +27,19 @@ function book(title, author, pages, read) {
 }
 
 // Set up myLibrary & hide table if empty
-if (myLibrary.length > table.rows.length - 1) {
-  populateTable();
-  buildSummary();
-  table.style.visibility = 'visible';
-  clearAllBtn.style.visibility = 'visible';
-} else if (myLibrary.length == 0) {
-  table.style.visibility = 'hidden';
-  clearAllBtn.style.visibility = 'hidden';
-  clearAllBtn.style.position = 'absolute';
+function firstTableBuild() {
+  if (myLibrary.length > table.rows.length - 1) {
+    populateTable();
+    buildSummary();
+    table.style.visibility = 'visible';
+    clearAllBtn.style.visibility = 'visible';
+  } else if (myLibrary.length == 0) {
+    table.style.visibility = 'hidden';
+    clearAllBtn.style.visibility = 'hidden';
+    clearAllBtn.style.position = 'absolute';
+  }
 }
+firstTableBuild();
 
 function addBookToLibrary() {
   newBook = new book(title.value, author.value, pages.value, formCheckbox.value);
@@ -53,7 +56,6 @@ function deleteBook() {
   localStorage.setItem("randomBookArray", JSON.stringify(randomBookArray));
   resetBookTag();
   buildSummary();
-  // location.reload();
 }
 
 // Resets each table row's "index" (data-book-tagk)
@@ -167,7 +169,8 @@ function addDummyBooks() {
 
   localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
   localStorage.setItem("randomBookArray", JSON.stringify(randomBookArray));
-  location.reload();
+  console.log("Library length: " + myLibrary.length);
+  firstTableBuild();
 }
 
 // Updates the read-checkbox after live update
