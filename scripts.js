@@ -105,6 +105,7 @@ function populateTable() {
     cell6.appendChild(button);
 
     localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+    localStorage.setItem("randomBookArray", JSON.stringify(randomBookArray));
   }
 }
 
@@ -116,8 +117,9 @@ function clearForm()  {
   formCheckbox.value = 'yes';
 }
 
-function addDummyBooks()  {
+function addDummyBooks() {
   let dummyArray = [];
+  let arrayLength = randomBookArray.length;
   dummyArray.push(new book('To Kill a Mockingbird', 'Harper Lee', '281', 'no'));
   dummyArray.push(new book('The Great Gatsby', ' F. Scott Fitzgerald', '208', 'no'));
   dummyArray.push(new book('Ulysses', 'James Joyce', '730', 'no'));
@@ -139,31 +141,34 @@ function addDummyBooks()  {
   dummyArray.push(new book('Frankenstein', 'Mary Shelley', '280', 'no'));
   dummyArray.push(new book('Things Fall Apart', 'Chinua Achebe', '224', 'no'));
 
-  function addFiveBooks() {
-    let randomBook = dummyArray[Math.floor(Math.random()*dummyArray.length)];
-    randomBookArray.push(randomBook);
+  function noDuplicates(checkArray, key) {
+    return [...new Map(checkArray.map(item => [item[key], item])).values()];
+  }
 
-    function noDuplicates(checkArray, key) {
-      return [...new Map(checkArray.map(item => [item[key], item])).values()];
-    }
+  function randomBookToArrays() {
+    let randomBook = dummyArray[Math.floor(Math.random() * dummyArray.length)];
+    randomBookArray.push(randomBook);
     randomBookArray = noDuplicates(randomBookArray, "title");
     myLibrary.push(...randomBookArray);
     myLibrary = noDuplicates(myLibrary, "title");
   }
 
-  if(randomBookArray.length <= 4) {
-    while(randomBookArray.length <= 4) addFiveBooks();
-  } else if(randomBookArray.length > 4 && randomBookArray.length <= 9) {
-    while(randomBookArray.length <= 9) addFiveBooks();
-  } else if(randomBookArray.length > 9 && randomBookArray.length <= 14) {
-    while(randomBookArray.length <= 14) addFiveBooks();
-  } else if(randomBookArray.length > 14 && randomBookArray.length <= 19) {
-    while(randomBookArray.length <= 19) addFiveBooks();
+  // Add 5 suggested books while < 15 suggested books are in myLibrary
+  if (randomBookArray.length <= 15) {
+    while (randomBookArray.length < arrayLength + 5) {
+      randomBookToArrays();
+    }
   }
-  
+  // 15+ suggested books in myLibrary
+  // Add up to 4 books to make suggested books in myLibrary = 20 
+  if (randomBookArray.length > 15 && randomBookArray.length == arrayLength) {
+    while (randomBookArray.length < 20) {
+      randomBookToArrays();
+    }
+  }
+
   localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
   localStorage.setItem("randomBookArray", JSON.stringify(randomBookArray));
-  
   location.reload();
 }
 
@@ -181,6 +186,7 @@ function updateReadStatus() {
   })
   myLibrary = newArr;
   localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+  localStorage.setItem("randomBookArray", JSON.stringify(randomBookArray));
   location.reload();
 }
 
@@ -202,7 +208,7 @@ function buildSummary() {
     summaryRead.classList.add('summaryRead');
     summaryRead.textContent = "Books Read: " + totalRead;
     summaryDiv.append(summaryRead);
-    
+
     const summaryUnread = document.createElement('p');
     summaryUnread.classList.add('summaryUnread');
     summaryUnread.textContent = "Books Unread: " + totalUnread;
