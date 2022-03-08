@@ -54,9 +54,10 @@ function deleteBook() {
   randomBookArray.splice(bookTag, 1);
   localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
   localStorage.setItem("randomBookArray", JSON.stringify(randomBookArray));
+  if (myLibrary.length < 1) firstTableBuild();
   resetBookTag();
-  firstTableBuild();
-  // buildSummary();
+  resetBookNum();
+  buildSummary();
 }
 
 // Resets each table row's "index" (data-book-tagk)
@@ -64,6 +65,13 @@ function resetBookTag() {
   for (i = 0; i < myLibrary.length; i++) {
     let tableRow = table.rows[i + 1];
     tableRow.dataset.bookTag = [i];
+  }
+}
+
+function resetBookNum() {
+  for (i = 0; i < myLibrary.length; i++) {
+    let cell1 = table.rows[i + 1].cells[0];
+    cell1.innerText = parseInt([i]) + 1;
   }
 }
 
@@ -155,10 +163,10 @@ function addDummyBooks() {
   }
 
   // Add 5 suggested books while < 15 suggested books are in myLibrary
-    while (randomBookArray.length <= 15 && randomBookArray.length < arrayLength + 5) {
-      randomBookToArrays();
-      buildSummary();
-    }
+  while (randomBookArray.length <= 15 && randomBookArray.length < arrayLength + 5) {
+    randomBookToArrays();
+    buildSummary();
+  }
 
   // 15+ suggested books in myLibrary
   // Add up to 4 books to make suggested books in myLibrary = 20 
