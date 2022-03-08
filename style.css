@@ -75,7 +75,7 @@ main  {
 #table tr:first-of-type {
   position: -webkit-sticky;
   position: sticky;
-  top: 120px;
+  top: 117px;
 }
 
 td, th {
@@ -138,6 +138,7 @@ form  {
   top: 68px;
   background-color: white;
   margin-bottom: 15px;
+  z-index: 1;
 }
 
 /* Add book & suggestion button */
@@ -214,7 +215,6 @@ button,
   background-color: #ef4444;
   margin: auto;
   border: solid var(--colorSlate600);
-  
 }
 
 footer  {
