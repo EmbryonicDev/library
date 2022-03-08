@@ -12,8 +12,8 @@ const tableCheckbox = document.querySelector('.tableCheckbox');
 let myLibrary = JSON.parse(localStorage.getItem("myLibrary")) || [];
 let randomBookArray = JSON.parse(localStorage.getItem("randomBookArray")) || [];
 let newBook = '';
-let totalRead = '';
-let totalUnread = '';
+let totalRead = 0;
+let totalUnread = 0;
 let buildSummaryCount = '';
 
 // localStorage.clear();
@@ -45,8 +45,7 @@ firstTableBuild();
 function addBookToLibrary() {
   newBook = new book(title.value, author.value, pages.value, formCheckbox.value);
   myLibrary.push(newBook);
-  buildSummary();
-  populateTable();
+  firstTableBuild();
 }
 
 function deleteBook() {
@@ -56,7 +55,8 @@ function deleteBook() {
   localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
   localStorage.setItem("randomBookArray", JSON.stringify(randomBookArray));
   resetBookTag();
-  buildSummary();
+  firstTableBuild();
+  // buildSummary();
 }
 
 // Resets each table row's "index" (data-book-tagk)
@@ -155,16 +155,17 @@ function addDummyBooks() {
   }
 
   // Add 5 suggested books while < 15 suggested books are in myLibrary
-  if (randomBookArray.length <= 15) {
-    while (randomBookArray.length < arrayLength + 5) {
+    while (randomBookArray.length <= 15 && randomBookArray.length < arrayLength + 5) {
       randomBookToArrays();
+      buildSummary();
     }
-  }
+
   // 15+ suggested books in myLibrary
   // Add up to 4 books to make suggested books in myLibrary = 20 
   if (randomBookArray.length > 15 && randomBookArray.length == arrayLength) {
     while (randomBookArray.length < 20) {
       randomBookToArrays();
+      buildSummary();
     }
   }
 
@@ -192,7 +193,7 @@ function updateReadStatus() {
 }
 
 function buildSummary() {
-  totalRead = (document.querySelectorAll('input[type="checkbox"]:checked').length);
+  totalRead = (table.querySelectorAll('input[type="checkbox"]:checked').length);
   totalUnread = myLibrary.length - totalRead;
   if (buildSummaryCount < 1) {
     buildSummaryCount += 1;
@@ -201,7 +202,7 @@ function buildSummary() {
     mainContainer.insertBefore(summaryDiv, mainContainer.firstChild);
 
     const summaryTotal = document.createElement('p');
-    summaryTotal.innerText = "Total Books in Library: " + (totalUnread + totalRead);
+    summaryTotal.innerText = "Total Books in Library: " + myLibrary.length;
     summaryTotal.setAttribute('id', 'summaryTotal');
     summaryDiv.append(summaryTotal);
 
@@ -218,7 +219,7 @@ function buildSummary() {
     const summaryTotal = document.getElementById('summaryTotal');
     const summaryRead = document.getElementById('summaryRead');
     const summaryUnread = document.getElementById('summaryUnread');
-    summaryTotal.innerText = "Total Books in Library: " + (totalUnread + totalRead);
+    summaryTotal.innerText = "Total Books in Library: " + myLibrary.length;
     summaryRead.innerText = "Books Read: " + totalRead;
     summaryUnread.innerText = "Books Unread: " + totalUnread;
   }
@@ -238,6 +239,8 @@ suggestionBtn.addEventListener('click', (e) => {
 
 clearAllBtn.addEventListener('click', (e) => {
   localStorage.clear();
+  // totalRead = 0;
+  // totalUnread = 0;
   location.reload();
 })
 
