@@ -26,20 +26,17 @@ function book(title, author, pages, read) {
   this.read = read
 }
 
-// Add books from localStorage && hide table & clearAllBtn if myLibrary = 0
-function checkLibrary() {
-  if (myLibrary.length > table.rows.length - 1) {
-    populateTable();
-    buildSummary();
-    table.style.visibility = 'visible';
-    clearAllBtn.style.visibility = 'visible';
-  } else if (myLibrary.length == 0) {
-    table.style.visibility = 'hidden';
-    clearAllBtn.style.visibility = 'hidden';
-    clearAllBtn.style.position = 'absolute';
-  }
+// Set up myLibrary & hide table if empty
+if (myLibrary.length > table.rows.length - 1) {
+  populateTable();
+  buildSummary();
+  table.style.visibility = 'visible';
+  clearAllBtn.style.visibility = 'visible';
+} else if (myLibrary.length == 0) {
+  table.style.visibility = 'hidden';
+  clearAllBtn.style.visibility = 'hidden';
+  clearAllBtn.style.position = 'absolute';
 }
-checkLibrary();
 
 function addBookToLibrary() {
   newBook = new book(title.value, author.value, pages.value, formCheckbox.value);
