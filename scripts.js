@@ -169,7 +169,6 @@ function addDummyBooks() {
 
   localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
   localStorage.setItem("randomBookArray", JSON.stringify(randomBookArray));
-  console.log("Library length: " + myLibrary.length);
   firstTableBuild();
 }
 
@@ -238,8 +237,10 @@ suggestionBtn.addEventListener('click', (e) => {
 
 clearAllBtn.addEventListener('click', (e) => {
   localStorage.clear();
-  buildSummaryCount = 0;
-  location.reload();
+  myLibrary = [];
+  randomBookArray = [];
+  firstTableBuild();
+  buildSummary();
 })
 
 // Form cancel button
