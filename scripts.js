@@ -52,7 +52,8 @@ function deleteBook() {
   localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
   localStorage.setItem("randomBookArray", JSON.stringify(randomBookArray));
   resetBookTag();
-  location.reload();
+  buildSummary();
+  // location.reload();
 }
 
 // Resets each table row's "index" (data-book-tagk)
