@@ -41,8 +41,8 @@ if (myLibrary.length > table.rows.length - 1) {
 function addBookToLibrary() {
   newBook = new book(title.value, author.value, pages.value, formCheckbox.value);
   myLibrary.push(newBook);
+  buildSummary();
   populateTable();
-  location.reload();
 }
 
 function deleteBook() {
@@ -193,23 +193,30 @@ function buildSummary() {
   if (buildSummaryCount < 1) {
     buildSummaryCount += 1;
     const summaryDiv = document.createElement('div');
-    summaryDiv.classList.add('summaryDiv');
+    summaryDiv.setAttribute('id', 'summaryDiv');
     mainContainer.insertBefore(summaryDiv, mainContainer.firstChild);
 
     const summaryTotal = document.createElement('p');
     summaryTotal.textContent = "Total Books in Library: " + (totalUnread + totalRead);
-    summaryTotal.classList.add('summaryTotal');
+    summaryTotal.setAttribute('id', 'summaryTotal');
     summaryDiv.append(summaryTotal);
 
     const summaryRead = document.createElement('p');
-    summaryRead.classList.add('summaryRead');
+    summaryRead.setAttribute('id', 'summaryRead');
     summaryRead.textContent = "Books Read: " + totalRead;
     summaryDiv.append(summaryRead);
 
     const summaryUnread = document.createElement('p');
-    summaryUnread.classList.add('summaryUnread');
+    summaryUnread.setAttribute('id', 'summaryUnread');
     summaryUnread.textContent = "Books Unread: " + totalUnread;
     summaryDiv.append(summaryUnread);
+  } else if (buildSummaryCount > 0) {
+    const summaryTotal = document.getElementById('summaryTotal');
+    const summaryRead = document.getElementById('summaryRead');
+    const summaryUnread = document.getElementById('summaryUnread');
+    summaryTotal.textContent = "Total Books in Library: " + (totalUnread + totalRead);
+    summaryRead.textContent = "Books Read: " + totalRead;
+    summaryUnread.textContent = "Books Unread: " + totalUnread;
   }
 }
 

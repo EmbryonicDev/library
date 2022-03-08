@@ -46,7 +46,7 @@ main  {
   flex-direction: column;
 }
 
-.summaryDiv  {
+#summaryDiv  {
   margin-top: 15px;
   display: flex;
   flex-direction: column;
@@ -56,7 +56,7 @@ main  {
   border-radius: 12px;
 }
 
-.summaryDiv p {
+#summaryDiv p {
   margin: 0;
   padding: 5px;
 }
