@@ -73,10 +73,10 @@ function populateTable() {
     let cell4 = tableRow.insertCell(3);
     let cell5 = tableRow.insertCell(4);
     let cell6 = tableRow.insertCell(5);
-    cell1.textContent = parseInt([i]) + 1;
-    cell2.textContent = myLibrary[i].title;
-    cell3.textContent = myLibrary[i].author;
-    cell4.textContent = myLibrary[i].pages;
+    cell1.innerText = parseInt([i]) + 1;
+    cell2.innerText = myLibrary[i].title;
+    cell3.innerText = myLibrary[i].author;
+    cell4.innerText = myLibrary[i].pages;
 
     let checkbox = document.createElement('input');
     checkbox.type = "checkbox";
@@ -197,26 +197,26 @@ function buildSummary() {
     mainContainer.insertBefore(summaryDiv, mainContainer.firstChild);
 
     const summaryTotal = document.createElement('p');
-    summaryTotal.textContent = "Total Books in Library: " + (totalUnread + totalRead);
+    summaryTotal.innerText = "Total Books in Library: " + (totalUnread + totalRead);
     summaryTotal.setAttribute('id', 'summaryTotal');
     summaryDiv.append(summaryTotal);
 
     const summaryRead = document.createElement('p');
     summaryRead.setAttribute('id', 'summaryRead');
-    summaryRead.textContent = "Books Read: " + totalRead;
+    summaryRead.innerText = "Books Read: " + totalRead;
     summaryDiv.append(summaryRead);
 
     const summaryUnread = document.createElement('p');
     summaryUnread.setAttribute('id', 'summaryUnread');
-    summaryUnread.textContent = "Books Unread: " + totalUnread;
+    summaryUnread.innerText = "Books Unread: " + totalUnread;
     summaryDiv.append(summaryUnread);
   } else if (buildSummaryCount > 0) {
     const summaryTotal = document.getElementById('summaryTotal');
     const summaryRead = document.getElementById('summaryRead');
     const summaryUnread = document.getElementById('summaryUnread');
-    summaryTotal.textContent = "Total Books in Library: " + (totalUnread + totalRead);
-    summaryRead.textContent = "Books Read: " + totalRead;
-    summaryUnread.textContent = "Books Unread: " + totalUnread;
+    summaryTotal.innerText = "Total Books in Library: " + (totalUnread + totalRead);
+    summaryRead.innerText = "Books Read: " + totalRead;
+    summaryUnread.innerText = "Books Unread: " + totalUnread;
   }
 }
 
