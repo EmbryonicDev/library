@@ -33,6 +33,7 @@ function firstTableBuild() {
     buildSummary();
     table.style.visibility = 'visible';
     clearAllBtn.style.visibility = 'visible';
+    clearAllBtn.style.position = 'relative';
   } else if (myLibrary.length == 0) {
     table.style.visibility = 'hidden';
     clearAllBtn.style.visibility = 'hidden';
