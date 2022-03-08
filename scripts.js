@@ -238,10 +238,7 @@ suggestionBtn.addEventListener('click', (e) => {
 
 clearAllBtn.addEventListener('click', (e) => {
   localStorage.clear();
-  myLibrary = [];
-  randomBookArray = [];
-  firstTableBuild();
-  buildSummary();
+  location.reload();
 })
 
 // Form cancel button
