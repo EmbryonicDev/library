@@ -218,7 +218,11 @@ button,
 }
 
 footer  {
+  display: flex;
   text-align: center;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
   margin-top: auto;
   padding: 5px;
   background-color: var(--colorSlate200);
