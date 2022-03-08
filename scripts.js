@@ -27,13 +27,13 @@ function book(title, author, pages, read) {
 }
 
 // Add books from localStorage && hide table & clearAllBtn if myLibrary = 0
-function checkLibrary()  {
-  if(myLibrary.length > table.rows.length -1) {
+function checkLibrary() {
+  if (myLibrary.length > table.rows.length - 1) {
     populateTable();
     buildSummary();
     table.style.visibility = 'visible';
     clearAllBtn.style.visibility = 'visible';
-  } else if(myLibrary.length == 0) {
+  } else if (myLibrary.length == 0) {
     table.style.visibility = 'hidden';
     clearAllBtn.style.visibility = 'hidden';
     clearAllBtn.style.position = 'absolute';
@@ -60,14 +60,14 @@ function deleteBook() {
 
 // Resets each table row's "index" (data-book-tagk)
 function resetBookTag() {
-  for(i = 0; i < myLibrary.length; i++)  {
+  for (i = 0; i < myLibrary.length; i++) {
     let tableRow = table.rows[i + 1];
     tableRow.dataset.bookTag = [i];
   }
 }
 
 function populateTable() {
-    for(i = table.rows.length - 1; i < myLibrary.length; i++) {
+  for (i = table.rows.length - 1; i < myLibrary.length; i++) {
     let tableRow = table.insertRow(-1);
     tableRow.dataset.bookTag = [i];
     let cell1 = tableRow.insertCell(0);
@@ -80,15 +80,15 @@ function populateTable() {
     cell2.textContent = myLibrary[i].title;
     cell3.textContent = myLibrary[i].author;
     cell4.textContent = myLibrary[i].pages;
-    
+
     let checkbox = document.createElement('input');
     checkbox.type = "checkbox";
     checkbox.className = "tableCheckbox";
     // ↓ Make sure read status is updated after refresh ↓
-    if(myLibrary[i].read === 'yes') {
+    if (myLibrary[i].read === 'yes') {
       checkbox.checked = true;
-    } 
-    checkbox.onchange = function() {
+    }
+    checkbox.onchange = function () {
       bookTag = parseInt(tableRow.dataset.bookTag);
       updateReadStatus();
     }
@@ -98,7 +98,7 @@ function populateTable() {
     button.type = "button";
     button.className = "deleteBtn";
     button.value = "Delete"
-    button.onclick = function() {
+    button.onclick = function () {
       bookTag = parseInt(tableRow.dataset.bookTag);
       deleteBook();
     }
@@ -109,7 +109,7 @@ function populateTable() {
   }
 }
 
-function clearForm()  {
+function clearForm() {
   title.value = '';
   author.value = '';
   pages.value = '';
@@ -175,11 +175,11 @@ function addDummyBooks() {
 // Updates the read-checkbox after live update
 function updateReadStatus() {
   const newArr = myLibrary.map(obj => {
-    if(obj.title === myLibrary[bookTag].title)  {
-      if(myLibrary[bookTag].read == 'yes') {
-        return {...obj, read: "no"};
-      } else if(myLibrary[bookTag].read =='no')  {
-        return {...obj, read: "yes"}
+    if (obj.title === myLibrary[bookTag].title) {
+      if (myLibrary[bookTag].read == 'yes') {
+        return { ...obj, read: "no" };
+      } else if (myLibrary[bookTag].read == 'no') {
+        return { ...obj, read: "yes" }
       }
     }
     return obj;
@@ -193,17 +193,17 @@ function updateReadStatus() {
 function buildSummary() {
   totalRead = (document.querySelectorAll('input[type="checkbox"]:checked').length);
   totalUnread = myLibrary.length - totalRead;
-  if(buildSummaryCount < 1) {
+  if (buildSummaryCount < 1) {
     buildSummaryCount += 1;
     const summaryDiv = document.createElement('div');
     summaryDiv.classList.add('summaryDiv');
     mainContainer.insertBefore(summaryDiv, mainContainer.firstChild);
-    
+
     const summaryTotal = document.createElement('p');
     summaryTotal.textContent = "Total Books in Library: " + (totalUnread + totalRead);
     summaryTotal.classList.add('summaryTotal');
     summaryDiv.append(summaryTotal);
-    
+
     const summaryRead = document.createElement('p');
     summaryRead.classList.add('summaryRead');
     summaryRead.textContent = "Books Read: " + totalRead;
@@ -247,9 +247,9 @@ form.addEventListener('submit', (e) => {
 });
 
 formCheckbox.addEventListener('change', e => {
-  if(e.target.checked)  {
+  if (e.target.checked) {
     e.target.value = 'yes';
-  } else{
+  } else {
     e.target.value = 'no';
   }
 })
