@@ -173,7 +173,7 @@ function addDummyBooks() {
   firstTableBuild();
 }
 
-// Updates the read-checkbox after live update
+// Keeps the read-checkbox input after live update
 function updateReadStatus() {
   const newArr = myLibrary.map(obj => {
     if (obj.title === myLibrary[bookTag].title) {
@@ -188,7 +188,7 @@ function updateReadStatus() {
   myLibrary = newArr;
   localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
   localStorage.setItem("randomBookArray", JSON.stringify(randomBookArray));
-  location.reload();
+  buildSummary();
 }
 
 function buildSummary() {
