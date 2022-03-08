@@ -157,25 +157,23 @@ function addDummyBooks() {
   function randomBookToArrays() {
     let randomBook = dummyArray[Math.floor(Math.random() * dummyArray.length)];
     randomBookArray.push(randomBook);
-    randomBookArray = noDuplicates(randomBookArray, "title");
     myLibrary.push(...randomBookArray);
+    randomBookArray = noDuplicates(randomBookArray, "title");
     myLibrary = noDuplicates(myLibrary, "title");
   }
-
+    
   // Add 5 suggested books while < 15 suggested books are in myLibrary
-  while (randomBookArray.length <= 15 && randomBookArray.length < arrayLength + 5) {
-    randomBookToArrays();
-    buildSummary();
+  while (arrayLength <= 15 && randomBookArray.length < arrayLength + 5) {
+    randomBookToArrays()
   }
 
-  // 15+ suggested books in myLibrary
+  // When 15+ suggested books are in myLibrary
   // Add up to 4 books to make suggested books in myLibrary = 20 
-  if (randomBookArray.length > 15 && randomBookArray.length == arrayLength) {
-    while (randomBookArray.length < 20) {
-      randomBookToArrays();
-      buildSummary();
+  if (arrayLength > 14) {
+      while (randomBookArray.length < 20) {
+        randomBookToArrays();
+      }
     }
-  }
 
   localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
   localStorage.setItem("randomBookArray", JSON.stringify(randomBookArray));
