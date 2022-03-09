@@ -39,7 +39,7 @@ function book(title, author, pages, read) {
 
 // Set up myLibrary & hide table if empty
 function firstTableBuild() {
-  if (myLibrary.length > table.rows.length - 1) {
+  if (myLibrary.length > 2) {
     populateTable();
     buildSummary();
     table.style.visibility = 'visible';
