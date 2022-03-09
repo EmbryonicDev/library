@@ -24,14 +24,25 @@
       <button id="addBtn">+</button>
       <button id="suggestionBtn">?</button>
       <button id="clearAllBtn">-</button>
+      <button id="sortMainBtn">↑↓</button>
+      <div id="sortBtnWrapper">
+        <button id="sortTitleAz" class="sortBtn sortTitle">Title A-Z</button>
+        <button id="sortTitleZa" class="sortBtn sortTitle">Title Z-A</button>
+        <button id="sortAuthorAz" class="sortBtn sortAuthor">Author A-Z</button>
+        <button id="sortAuthorZa" class="sortBtn sortAuthor">Author Z-A</button>
+        <button id="sortPagesLow" class="sortBtn sortPages">Page Count ↓↑</button>
+        <button id="sortPagesHigh" class="sortBtn sortPages">Page Count ↑↓</button>
+        <button id="sortReadFirst" class="sortBtn sortReadStatus">Read First</button>
+        <button id="sortUnreadFirst" class="sortBtn sortReadStatus">Unread First</button>
+      </div>
     </div>
     <table id="table">
       <tr>
         <th>#</th>
         <th>Title</th>
         <th>Author</th>
-        <th>Pages</th>
-        <th>Read</th>
+        <th>Page <br>Count</th>
+        <th>Read <br>Status</th>
         <th>Remove</th>
       </tr>
     </table>
