@@ -1,9 +1,17 @@
 const mainContainer = document.getElementById('mainContainer');
 const btnContainer = document.getElementById('btnContainer');
 const addBtn = document.getElementById('addBtn');
+const suggestionBtn = document.getElementById('suggestionBtn');
 const sortMainBtn = document.getElementById('sortMainBtn');
 const sortBtnWrapper = document.getElementById('sortBtnWrapper');
-const suggestionBtn = document.getElementById('suggestionBtn');
+const sortTitleAz = document.getElementById('sortTitleAz');
+const sortTitleZa = document.getElementById('sortTitleZa');
+const sortAuthorAz = document.getElementById('sortAuthorAz');
+const sortAuthorZa = document.getElementById('sortAuthorZa');
+const sortPagesLow = document.getElementById('sortPagesLow');
+const sortPagesHigh = document.getElementById('sortPagesHigh');
+const sortReadFirst = document.getElementById('sortReadFirst');
+const sortUnreadFirst = document.getElementById('sortUnreadFirst');
 const clearAllBtn = document.getElementById('clearAllBtn');
 const form = document.getElementById('form');
 const table = document.getElementById('table');
@@ -17,6 +25,7 @@ let newBook = '';
 let totalRead = 0;
 let totalUnread = 0;
 let buildSummaryCount = '';
+let sort = '';
 
 // localStorage.clear();
 
@@ -40,8 +49,8 @@ function firstTableBuild() {
     table.style.visibility = 'hidden';
     clearAllBtn.style.visibility = 'hidden';
     clearAllBtn.style.position = 'absolute';
-    hideSortMainBtn();
   }
+  hideSortMainBtn();
 }
 firstTableBuild();
 
@@ -137,6 +146,63 @@ function populateTable() {
     localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
     localStorage.setItem("randomBookArray", JSON.stringify(randomBookArray));
     hideSortMainBtn();
+  }
+}
+
+function sortFunction() {
+  let sorted = '';
+  let tempLibrary = myLibrary;
+  myLibrary = [];
+  switch (sort) {
+    case 'sortTitleAz':
+      sorted = tempLibrary.sort((a, b) => a.title > b.title ? 1 : -1);
+      break;
+    case 'sortTitleZa':
+      sorted = tempLibrary.sort((a, b) => a.title > b.title ? -1 : 1);
+      break;
+    case 'sortAuthorAz':
+      sorted = tempLibrary.sort((a, b) => a.author > b.author ? 1 : -1);
+      break;
+    case 'sortAuthorZa':
+      sorted = tempLibrary.sort((a, b) => a.author > b.author ? -1 : 1);
+      break;
+    case 'sortPagesLow':
+      sorted = tempLibrary.sort((a, b) => b.pages - a.pages);
+      break;
+    case 'sortPagesHigh':
+      sorted = tempLibrary.sort((a, b) => a.pages - b.pages);
+      break;
+    case 'sortReadFirst':
+      sorted = tempLibrary.sort((a, b) => a.read > b.read ? -1 : 1);
+      console.log("read first!")
+      console.log(tempLibrary);
+      break;
+    case 'sortUnreadFirst':
+      sorted = tempLibrary.sort((a, b) => a.read > b.read ? 1 : -1);
+      break;
+  }
+  myLibrary = sorted;
+  localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+  localStorage.setItem("randomBookArray", JSON.stringify(randomBookArray));
+  sort = '';
+  afterSort();
+}
+
+function afterSort() {
+  checkbox = document.getElementsByClassName('checkbox');
+  for (i = 0; i < myLibrary.length; i++) {
+    let cell1 = table.rows[i + 1].cells[1];
+    let cell2 = table.rows[i + 1].cells[2];
+    let cell3 = table.rows[i + 1].cells[3];
+    let cell4 = table.rows[i + 1].cells[4].children[0];
+    cell1.innerText = myLibrary[i].title;
+    cell2.innerText = myLibrary[i].author;
+    cell3.innerText = myLibrary[i].pages;
+    if (myLibrary[i].read === 'yes') {
+      cell4.checked = true;
+    } else if (myLibrary[i].read === 'no') {
+      cell4.checked = false;
+    }
   }
 }
 
@@ -272,6 +338,40 @@ clearAllBtn.addEventListener('click', (e) => {
 
 sortMainBtn.addEventListener('click', () => {
   hideSortBtnWrapper();
+})
+
+// sortBtnWrapper buttons
+sortTitleAz.addEventListener('click', () => {
+  sort = 'sortTitleAz'
+  sortFunction();
+})
+sortTitleZa.addEventListener('click', () => {
+  sort = 'sortTitleZa'
+  sortFunction();
+})
+sortAuthorAz.addEventListener('click', () => {
+  sort = 'sortAuthorAz'
+  sortFunction();
+})
+sortAuthorZa.addEventListener('click', () => {
+  sort = 'sortAuthorZa'
+  sortFunction();
+})
+sortPagesLow.addEventListener('click', () => {
+  sort = 'sortPagesLow'
+  sortFunction();
+})
+sortPagesHigh.addEventListener('click', () => {
+  sort = 'sortPagesHigh'
+  sortFunction();
+})
+sortReadFirst.addEventListener('click', () => {
+  sort = 'sortReadFirst'
+  sortFunction();
+})
+sortUnreadFirst.addEventListener('click', () => {
+  sort = 'sortUnreadFirst'
+  sortFunction();
 })
 
 // Form cancel button
