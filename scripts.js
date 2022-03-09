@@ -2,6 +2,7 @@ const mainContainer = document.getElementById('mainContainer');
 const btnContainer = document.getElementById('btnContainer');
 const addBtn = document.getElementById('addBtn');
 const sortMainBtn = document.getElementById('sortMainBtn');
+const sortBtnWrapper = document.getElementById('sortBtnWrapper');
 const suggestionBtn = document.getElementById('suggestionBtn');
 const clearAllBtn = document.getElementById('clearAllBtn');
 const form = document.getElementById('form');
@@ -45,13 +46,20 @@ function firstTableBuild() {
 firstTableBuild();
 
 function hideSortMainBtn() {
-  if(myLibrary.length < 2)  {
+  if (myLibrary.length < 2) {
     sortMainBtn.style.visibility = "hidden";
     sortMainBtn.style.position = "absolute";
   } else {
     sortMainBtn.style.visibility = "visible"
     sortMainBtn.style.position = "relative";
   }
+}
+
+function hideSortBtnWrapper() {
+  sortBtnWrapper.style.visibility = 'visible';
+  sortBtnWrapper.style.position = 'relative';
+  setTimeout("sortBtnWrapper.style.visibility = 'hidden'", 6000);
+  setTimeout("sortBtnWrapper.style.position = 'absolute'", 6000);
 }
 
 function addBookToLibrary() {
@@ -175,7 +183,7 @@ function addDummyBooks() {
     randomBookArray = noDuplicates(randomBookArray, "title");
     myLibrary = noDuplicates(myLibrary, "title");
   }
-    
+
   // Add 5 suggested books while < 15 suggested books are in myLibrary
   while (arrayLength <= 15 && randomBookArray.length < arrayLength + 5) {
     randomBookToArrays()
@@ -184,10 +192,10 @@ function addDummyBooks() {
   // When 15+ suggested books are in myLibrary
   // Add up to 4 books to make suggested books in myLibrary = 20 
   if (arrayLength > 14) {
-      while (randomBookArray.length < 20) {
-        randomBookToArrays();
-      }
+    while (randomBookArray.length < 20) {
+      randomBookToArrays();
     }
+  }
 
   localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
   localStorage.setItem("randomBookArray", JSON.stringify(randomBookArray));
@@ -260,6 +268,10 @@ suggestionBtn.addEventListener('click', (e) => {
 clearAllBtn.addEventListener('click', (e) => {
   localStorage.clear();
   location.reload();
+})
+
+sortMainBtn.addEventListener('click', () => {
+  hideSortBtnWrapper();
 })
 
 // Form cancel button
