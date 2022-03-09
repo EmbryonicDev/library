@@ -1,6 +1,7 @@
 const mainContainer = document.getElementById('mainContainer');
 const btnContainer = document.getElementById('btnContainer');
 const addBtn = document.getElementById('addBtn');
+const sortMainBtn = document.getElementById('sortMainBtn');
 const suggestionBtn = document.getElementById('suggestionBtn');
 const clearAllBtn = document.getElementById('clearAllBtn');
 const form = document.getElementById('form');
@@ -38,9 +39,20 @@ function firstTableBuild() {
     table.style.visibility = 'hidden';
     clearAllBtn.style.visibility = 'hidden';
     clearAllBtn.style.position = 'absolute';
+    hideSortMainBtn();
   }
 }
 firstTableBuild();
+
+function hideSortMainBtn() {
+  if(myLibrary.length < 2)  {
+    sortMainBtn.style.visibility = "hidden";
+    sortMainBtn.style.position = "absolute";
+  } else {
+    sortMainBtn.style.visibility = "visible"
+    sortMainBtn.style.position = "relative";
+  }
+}
 
 function addBookToLibrary() {
   newBook = new book(title.value, author.value, pages.value, formCheckbox.value);
@@ -57,6 +69,7 @@ function deleteBook() {
   if (myLibrary.length < 1) firstTableBuild();
   resetBookTag();
   resetBookNum();
+  hideSortMainBtn()
   buildSummary();
 }
 
@@ -115,6 +128,7 @@ function populateTable() {
 
     localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
     localStorage.setItem("randomBookArray", JSON.stringify(randomBookArray));
+    hideSortMainBtn();
   }
 }
 
@@ -245,8 +259,6 @@ suggestionBtn.addEventListener('click', (e) => {
 
 clearAllBtn.addEventListener('click', (e) => {
   localStorage.clear();
-  // totalRead = 0;
-  // totalUnread = 0;
   location.reload();
 })
 
