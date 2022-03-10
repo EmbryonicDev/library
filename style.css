@@ -159,8 +159,7 @@ button,
 }
 #addBtn, 
 #suggestionBtn,
-#clearAllBtn,
-#sortMainBtn {
+#clearAllBtn {
   background-color: #0ea5e9;
   border-radius: 50%;
   height: 2.5rem;
@@ -178,16 +177,10 @@ button,
   background-color: #ef4444;
 }
 
-#sortMainBtn {
-  background-color: #e879f9;
-  font-size: 1.4rem;
-}
-
 #addBtn:hover,
 #suggestionBtn:hover,
 #clearAllBtn:hover,
-.deleteBtn:hover,
-#sortMainBtn:hover  {
+.deleteBtn:hover  {
   background-color: white;
   color: #0ea5e9;
   cursor: pointer;
