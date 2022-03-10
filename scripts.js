@@ -3,15 +3,7 @@ const btnContainer = document.getElementById('btnContainer');
 const addBtn = document.getElementById('addBtn');
 const suggestionBtn = document.getElementById('suggestionBtn');
 const sortMainBtn = document.getElementById('sortMainBtn');
-const sortBtnWrapper = document.getElementById('sortBtnWrapper');
-const sortTitleAz = document.getElementById('sortTitleAz');
-const sortTitleZa = document.getElementById('sortTitleZa');
-const sortAuthorAz = document.getElementById('sortAuthorAz');
-const sortAuthorZa = document.getElementById('sortAuthorZa');
-const sortPagesLow = document.getElementById('sortPagesLow');
-const sortPagesHigh = document.getElementById('sortPagesHigh');
-const sortReadFirst = document.getElementById('sortReadFirst');
-const sortUnreadFirst = document.getElementById('sortUnreadFirst');
+const sortOptions = document.getElementById('sortOptions');
 const clearAllBtn = document.getElementById('clearAllBtn');
 const form = document.getElementById('form');
 const table = document.getElementById('table');
@@ -149,11 +141,12 @@ function populateTable() {
   }
 }
 
-function sortFunction() {
+// Sort table contents
+sortOptions.addEventListener('change', function () {
   let sorted = '';
   let tempLibrary = myLibrary;
   myLibrary = [];
-  switch (sort) {
+  switch (this.value) {
     case 'sortTitleAz':
       sorted = tempLibrary.sort((a, b) => a.title > b.title ? 1 : -1);
       break;
@@ -167,15 +160,13 @@ function sortFunction() {
       sorted = tempLibrary.sort((a, b) => a.author > b.author ? -1 : 1);
       break;
     case 'sortPagesLow':
-      sorted = tempLibrary.sort((a, b) => b.pages - a.pages);
-      break;
-    case 'sortPagesHigh':
       sorted = tempLibrary.sort((a, b) => a.pages - b.pages);
+      break;
+      case 'sortPagesHigh':
+      sorted = tempLibrary.sort((a, b) => b.pages - a.pages);
       break;
     case 'sortReadFirst':
       sorted = tempLibrary.sort((a, b) => a.read > b.read ? -1 : 1);
-      console.log("read first!")
-      console.log(tempLibrary);
       break;
     case 'sortUnreadFirst':
       sorted = tempLibrary.sort((a, b) => a.read > b.read ? 1 : -1);
@@ -186,7 +177,7 @@ function sortFunction() {
   localStorage.setItem("randomBookArray", JSON.stringify(randomBookArray));
   sort = '';
   afterSort();
-}
+});
 
 function afterSort() {
   checkbox = document.getElementsByClassName('checkbox');
@@ -338,40 +329,6 @@ clearAllBtn.addEventListener('click', (e) => {
 
 sortMainBtn.addEventListener('click', () => {
   hideSortBtnWrapper();
-})
-
-// sortBtnWrapper buttons
-sortTitleAz.addEventListener('click', () => {
-  sort = 'sortTitleAz'
-  sortFunction();
-})
-sortTitleZa.addEventListener('click', () => {
-  sort = 'sortTitleZa'
-  sortFunction();
-})
-sortAuthorAz.addEventListener('click', () => {
-  sort = 'sortAuthorAz'
-  sortFunction();
-})
-sortAuthorZa.addEventListener('click', () => {
-  sort = 'sortAuthorZa'
-  sortFunction();
-})
-sortPagesLow.addEventListener('click', () => {
-  sort = 'sortPagesLow'
-  sortFunction();
-})
-sortPagesHigh.addEventListener('click', () => {
-  sort = 'sortPagesHigh'
-  sortFunction();
-})
-sortReadFirst.addEventListener('click', () => {
-  sort = 'sortReadFirst'
-  sortFunction();
-})
-sortUnreadFirst.addEventListener('click', () => {
-  sort = 'sortUnreadFirst'
-  sortFunction();
 })
 
 // Form cancel button
