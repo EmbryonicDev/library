@@ -365,6 +365,22 @@ cancelBtn.addEventListener('click', () => {
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
+  // New book to title case
+  let title = form.title.value;
+  let author = form.author.value;
+  let titleCaseAnswer = '';
+  function titleCase(str) {
+    str = str.toLowerCase().split(' ');
+    for (i = 0; i < str.length; i++) {
+      str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1); 
+    }
+    titleCaseAnswer = str.join(' ');
+    return str.join(' ');
+  };
+  titleCase(title);
+  form.title.value = titleCaseAnswer;
+  titleCase(author);
+  form.author.value = titleCaseAnswer;
   form.style.visibility = 'hidden';
   addBookToLibrary();
 });
