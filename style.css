@@ -14,10 +14,11 @@ body  {
   font-family: 'Roboto Serif', sans-serif;
   display: flex;
   flex-direction: column;
+  background-color: var(--colorSlate100);
 }
 header  {
-  background-color: var(--colorSlate200);
-  box-shadow: 0 6px 2px -2px rgba(0, 0, 0, 0.2);
+  background-color: var(--colorSlate400);
+  box-shadow: 0 6px 2px -2px rgba(0, 0, 0, 0.6);
   position: -webkit-sticky;
   position: sticky;
   top: 0;
@@ -73,6 +74,7 @@ main  {
   letter-spacing: 1px;
   font-size: 0.8rem;
   margin-bottom: 15px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.6);
 }
 
 /* Sticky position for table's first row */
@@ -118,6 +120,7 @@ form  {
   position: absolute;
   align-self: center;
   position: fixed;
+  top: 150px;
   border: solid var(--colorSlate600);
   padding: 15px;
   display: flex;
@@ -127,7 +130,7 @@ form  {
   width: fit-content;
   background-color: var(--colorSlate100);
   border-radius: 8px;
-  box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.6);
   visibility: hidden;
 }
 
@@ -141,7 +144,6 @@ form  {
   position: -webkit-sticky;
   position: sticky;
   top: 68px;
-  background-color: white;
   margin-bottom: 15px;
 }
 
@@ -263,7 +265,7 @@ footer  {
   gap: 10px;
   margin-top: auto;
   padding: 5px;
-  background-color: var(--colorSlate200);
+  background-color: var(--colorSlate400);
   position: -webkit-sticky;
   position: sticky;
   bottom: 0;
