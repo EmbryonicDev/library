@@ -146,6 +146,7 @@ form  {
   position: sticky;
   top: 68px;
   margin-bottom: 15px;
+  background-color: var(--colorSlate100);
 }
 
 /* Buttons*/
