@@ -221,8 +221,9 @@ button,
   border-radius: 8px;
   padding: 5px;
   font-size: 0.9rem;
-  border: 0.5px solid var(--colorSlate600);
-  background-color: var(--colorSlate200);
+  border: 1px solid var(--colorSlate600);
+  background-color: var(--colorSlate300);
+  font-weight: 500;
 }
 
 #sortOptions:hover,
