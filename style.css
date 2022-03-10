@@ -151,7 +151,9 @@ button,
   font-weight: 700;
 }
 
-.deleteBtn  {
+.deleteBtn,
+#cancelBtn,
+#submitBtn  {
   width: max-content;
   background-color: #ef4444;
   margin: auto;
@@ -177,10 +179,16 @@ button,
   background-color: #ef4444;
 }
 
+#submitBtn {
+  background-color: #0ea5e9;
+}
+
 #addBtn:hover,
 #suggestionBtn:hover,
 #clearAllBtn:hover,
-.deleteBtn:hover  {
+.deleteBtn:hover,
+#submitBtn:hover,
+#cancelBtn:hover  {
   background-color: white;
   color: #0ea5e9;
   cursor: pointer;
@@ -194,7 +202,8 @@ button,
 }
 
 #clearAllBtn:hover,
-.deleteBtn:hover  {
+.deleteBtn:hover,
+#cancelBtn:hover  {
   color: #ef4444;
 }
 
