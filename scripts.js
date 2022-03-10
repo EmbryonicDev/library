@@ -155,7 +155,7 @@ sortOptions.addEventListener('change', function () {
     case 'sortPagesLow':
       sorted = tempLibrary.sort((a, b) => a.pages - b.pages);
       break;
-      case 'sortPagesHigh':
+    case 'sortPagesHigh':
       sorted = tempLibrary.sort((a, b) => b.pages - a.pages);
       break;
     case 'sortReadFirst':
@@ -173,6 +173,7 @@ sortOptions.addEventListener('change', function () {
 });
 
 function afterSort() {
+  sortOptions.options[0].selected = 'selected';
   checkbox = document.getElementsByClassName('checkbox');
   for (i = 0; i < myLibrary.length; i++) {
     let cell1 = table.rows[i + 1].cells[1];
