@@ -243,12 +243,21 @@ input[type=number]:focus {
 /* Form heading */
 form > div:first-child  {
   align-self: center;
-  font-weight: 700;
+  font-weight: 900;
 }
 
 input {
   margin-top: 20px;
   width: 350px;
+  border-radius: 8px;
+  border: solid 1px var(--colorSlate400);
+  height: 1.8rem;
+  font-size: 1rem;
+  padding: 5px;
+}
+
+label {
+  font-weight: 600;
 }
 
 /* Read checkbox */
