@@ -42,25 +42,18 @@ function firstTableBuild() {
     clearAllBtn.style.visibility = 'hidden';
     clearAllBtn.style.position = 'absolute';
   }
-  hideSortMainBtn();
+  hideSortOptions();
 }
 firstTableBuild();
 
-function hideSortMainBtn() {
+function hideSortOptions() {
   if (myLibrary.length < 2) {
-    sortMainBtn.style.visibility = "hidden";
-    sortMainBtn.style.position = "absolute";
+    sortOptions.style.visibility = "hidden";
+    sortOptions.style.position = "absolute";
   } else {
-    sortMainBtn.style.visibility = "visible"
-    sortMainBtn.style.position = "relative";
+    sortOptions.style.visibility = "visible"
+    sortOptions.style.position = "relative";
   }
-}
-
-function hideSortBtnWrapper() {
-  sortBtnWrapper.style.visibility = 'visible';
-  sortBtnWrapper.style.position = 'relative';
-  setTimeout("sortBtnWrapper.style.visibility = 'hidden'", 6000);
-  setTimeout("sortBtnWrapper.style.position = 'absolute'", 6000);
 }
 
 function addBookToLibrary() {
@@ -78,7 +71,7 @@ function deleteBook() {
   if (myLibrary.length < 1) firstTableBuild();
   resetBookTag();
   resetBookNum();
-  hideSortMainBtn()
+  hideSortOptions()
   buildSummary();
 }
 
@@ -137,7 +130,7 @@ function populateTable() {
 
     localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
     localStorage.setItem("randomBookArray", JSON.stringify(randomBookArray));
-    hideSortMainBtn();
+    hideSortOptions();
   }
 }
 
@@ -325,10 +318,6 @@ suggestionBtn.addEventListener('click', (e) => {
 clearAllBtn.addEventListener('click', (e) => {
   localStorage.clear();
   location.reload();
-})
-
-sortMainBtn.addEventListener('click', () => {
-  hideSortBtnWrapper();
 })
 
 // Form cancel button
