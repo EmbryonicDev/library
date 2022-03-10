@@ -3,6 +3,9 @@
   --colorSlate200: #e2e8f0;
   --colorSlate400: #94a3b8;
   --colorSlate600: #475569;
+  --colorRed500: #ef4444;
+  --colorBlue500: #0ea5e9;
+  --colorGreen500: #22c55e;
 }
 body  {
   height: 100vh;
@@ -155,14 +158,14 @@ button,
 #cancelBtn,
 #submitBtn  {
   width: max-content;
-  background-color: #ef4444;
+  background-color: var(--colorRed500);
   margin: auto;
   border: solid var(--colorSlate600);
 }
 #addBtn, 
 #suggestionBtn,
 #clearAllBtn {
-  background-color: #0ea5e9;
+  background-color: var(--colorBlue500);
   border-radius: 50%;
   height: 2.5rem;
   width: 2.5rem;
@@ -172,15 +175,15 @@ button,
 }
 
 #suggestionBtn  {
-  background-color: #22c55e;
+  background-color: var(--colorGreen500);
 }
 
 #clearAllBtn  {
-  background-color: #ef4444;
+  background-color: var(--colorRed500);
 }
 
 #submitBtn {
-  background-color: #0ea5e9;
+  background-color: var(--colorBlue500);
 }
 
 #addBtn:hover,
@@ -190,7 +193,7 @@ button,
 #submitBtn:hover,
 #cancelBtn:hover  {
   background-color: white;
-  color: #0ea5e9;
+  color: var(--colorBlue500);
   cursor: pointer;
   transform: scale(1.3);
   border: 0.8px solid var(--colorSlate400);
@@ -198,13 +201,13 @@ button,
 }
 
 #suggestionBtn:hover  {
-  color: #22c55e;
+  color: var(--colorGreen500);
 }
 
 #clearAllBtn:hover,
 .deleteBtn:hover,
 #cancelBtn:hover  {
-  color: #ef4444;
+  color: var(--colorRed500);
 }
 
 #sortMainBtn:hover{
