@@ -3,6 +3,7 @@
   --colorSlate200: #e2e8f0;
   --colorSlate300: #cbd5e1;
   --colorSlate400: #94a3b8;
+  --colorSlate500: #64748b;
   --colorSlate600: #475569;
   --colorRed500: #ef4444;
   --colorBlue500: #0ea5e9;
@@ -17,7 +18,7 @@ body  {
   background-color: var(--colorSlate100);
 }
 header  {
-  background-color: var(--colorSlate400);
+  background-color: var(--colorSlate500);
   box-shadow: 0 6px 2px -2px rgba(0, 0, 0, 0.6);
   position: -webkit-sticky;
   position: sticky;
@@ -53,13 +54,15 @@ main  {
 }
 
 #summaryDiv  {
-  margin-top: 15px;
+  margin: 15px;
   display: flex;
   flex-direction: column;
   justify-self: center;
   align-self: center;
   border: solid var(--colorSlate600);
+  background-color: var(--colorSlate300);
   border-radius: 12px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.6);
 }
 
 #summaryDiv p {
@@ -158,6 +161,7 @@ button,
   color: white;
   border-radius: 8px;
   font-weight: 700;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.6);
 }
 
 .deleteBtn,
@@ -222,9 +226,10 @@ button,
   border-radius: 8px;
   padding: 5px;
   font-size: 0.9rem;
-  border: 1px solid var(--colorSlate600);
+  border: solid var(--colorSlate600);
   background-color: var(--colorSlate300);
   font-weight: 500;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.6);
 }
 
 #sortOptions:hover,
@@ -277,7 +282,7 @@ footer  {
   gap: 10px;
   margin-top: auto;
   padding: 5px;
-  background-color: var(--colorSlate400);
+  background-color: var(--colorSlate600);
   position: -webkit-sticky;
   position: sticky;
   bottom: 0;
