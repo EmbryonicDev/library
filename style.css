@@ -210,10 +210,6 @@ button,
   color: var(--colorRed500);
 }
 
-#sortMainBtn:hover{
-  color: #e879f9;
-}
-
 #sortOptions  {
   height: 2rem;
   align-self: end;
