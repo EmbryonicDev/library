@@ -70,6 +70,14 @@ main  {
   padding: 5px;
 }
 
+#controlsContainer {
+display: grid;
+grid-auto-flow: column;
+justify-content: center;
+align-items: center;
+gap: 15px;
+}
+
 /* Minimal table styling */
 #table {
   margin: auto;
@@ -141,15 +149,35 @@ form  {
 #btnContainer {
   justify-self: center;
   align-self: center;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   justify-content: center;
-  width: 100%;
+  width: max-content;
   gap: 15px;
   position: -webkit-sticky;
   position: sticky;
   top: 68px;
   margin-bottom: 15px;
   background-color: var(--colorSlate100);
+}
+
+/* Buttons message */
+#btnMessage  {
+  grid-column: span 3;
+  text-align: center;
+  padding: 3px 3px 0 3px;
+  height: 2rem;
+  border-radius: 8px;
+  justify-self: center;
+  align-self: center;
+  margin-bottom: 15px;
+  border: solid var(--colorSlate600);
+  width: fit-content;
+  visibility: hidden;
+  margin-bottom: 5px;
+  background-color: #a5f3fc;
+  font-weight: 500;
+  font-size: 0.9rem;
 }
 
 /* Buttons*/
@@ -222,7 +250,6 @@ button,
 
 #sortOptions  {
   height: 2rem;
-  align-self: end;
   border-radius: 8px;
   padding: 5px;
   font-size: 0.9rem;

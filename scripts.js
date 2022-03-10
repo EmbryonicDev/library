@@ -5,6 +5,7 @@ const suggestionBtn = document.getElementById('suggestionBtn');
 const sortMainBtn = document.getElementById('sortMainBtn');
 const sortOptions = document.getElementById('sortOptions');
 const clearAllBtn = document.getElementById('clearAllBtn');
+const btnMessage = document.getElementById('btnMessage');
 const form = document.getElementById('form');
 const table = document.getElementById('table');
 const cancelBtn = document.getElementById('cancelBtn');
@@ -311,14 +312,49 @@ addBtn.addEventListener('click', () => {
   clearForm();
 })
 
+addBtn.addEventListener('mouseover', (e) => {
+  btnMessage.style.visibility = "visible";
+  btnMessage.innerText = "Add a New Book";
+})
+
+addBtn.addEventListener('mouseout', (e) => {
+  btnMessage.style.visibility = "hidden";
+  btnMessage.innerText = "";
+})
+
 // Add up to 20 book suggestions
 suggestionBtn.addEventListener('click', (e) => {
   addDummyBooks();
 })
 
+suggestionBtn.addEventListener('mouseover', (e) => {
+  btnMessage.style.visibility = "visible";
+  if(randomBookArray.length < 15) btnMessage.innerText = "Add 5 Book Suggestions";
+  if(randomBookArray.length == 16) btnMessage.innerText = "Add 4 Book Suggestions";
+  if(randomBookArray.length == 17) btnMessage.innerText = "Add 3 Book Suggestions";
+  if(randomBookArray.length == 18) btnMessage.innerText = "Add 2 Book Suggestions";
+  if(randomBookArray.length == 19) btnMessage.innerText = "Add 1 Book Suggestions";
+  if(randomBookArray.length == 20) btnMessage.innerText = "Only 20 Book Suggestions Available";
+})
+
+suggestionBtn.addEventListener('mouseout', (e) => {
+  btnMessage.style.visibility = "hidden";
+  btnMessage.innerText = "";
+})
+
 clearAllBtn.addEventListener('click', (e) => {
   localStorage.clear();
   location.reload();
+})
+
+clearAllBtn.addEventListener('mouseover', (e) => {
+  btnMessage.style.visibility = "visible";
+  btnMessage.innerText = "Clear all Books";
+})
+
+clearAllBtn.addEventListener('mouseout', (e) => {
+  btnMessage.style.visibility = "hidden";
+  btnMessage.innerText = "";
 })
 
 // Form cancel button
