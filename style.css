@@ -81,6 +81,7 @@ main  {
 /* Minimal table styling */
 #table {
   margin: auto;
+  margin-top: 5px;
   border-collapse: collapse;
   border: 2px solid var(--colorSlate600);
   letter-spacing: 1px;
@@ -93,7 +94,7 @@ main  {
 #table tr:first-of-type {
   position: -webkit-sticky;
   position: sticky;
-  top: 117px;
+  top: 100px;
 }
 
 td, th {
