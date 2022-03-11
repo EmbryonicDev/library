@@ -85,7 +85,7 @@ main  {
 /* Minimal table styling */
 #table {
   margin: auto;
-  margin-top: 5px;
+  margin-top: 10px;
   border-collapse: collapse;
   border: 2px solid var(--colorSlate600);
   letter-spacing: 1px;
