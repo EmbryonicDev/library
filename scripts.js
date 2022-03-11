@@ -36,6 +36,7 @@ function firstTableBuild() {
   if (myLibrary.length > 0) {
     populateTable();
     buildSummary();
+    btnContainer.style.width = "max-content";
     table.style.visibility = 'visible';
     clearAllBtn.style.visibility = 'visible';
     clearAllBtn.style.position = 'relative';
@@ -43,6 +44,7 @@ function firstTableBuild() {
     table.style.visibility = 'hidden';
     clearAllBtn.style.visibility = 'hidden';
     clearAllBtn.style.position = 'absolute';
+    btnContainer.style.width = "180px";
   }
   hideSortOptions();
 }
@@ -72,10 +74,12 @@ function deleteBook() {
   randomBookArray.splice(bookTag, 1);
   localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
   localStorage.setItem("randomBookArray", JSON.stringify(randomBookArray));
+  // Hide summaryDiv & adjust size for btnMessage to work without disturbing neighbors
   if (myLibrary.length < 1) {
     firstTableBuild();
     summaryDiv.style.visibility = 'hidden';
     summaryDiv.style.position = 'absolute';
+    btnContainer.style.width = "180px";
   } 
   resetBookTag();
   resetBookNum();
