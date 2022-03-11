@@ -208,8 +208,6 @@ function clearForm() {
 }
 
 function addDummyBooks() {
-  summaryDiv.style.visibility = 'visible';
-  summaryDiv.style.position = 'relative';
   let dummyArray = [];
   let arrayLength = randomBookArray.length;
   dummyArray.push(new book('To Kill a Mockingbird', 'Harper Lee', '281', 'no'));
@@ -257,10 +255,11 @@ function addDummyBooks() {
       randomBookToArrays();
     }
   }
-
   localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
   localStorage.setItem("randomBookArray", JSON.stringify(randomBookArray));
   firstTableBuild();
+  summaryDiv.style.visibility = 'visible';
+  summaryDiv.style.position = 'relative';
 }
 
 // Keeps the read-checkbox input after live update
