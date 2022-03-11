@@ -165,9 +165,6 @@ form  {
   grid-template-rows: repeat(2, max-content);
   justify-self: end;
   gap: 5px 15px;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 68px;
   margin: 5px 15px 5px 0;
 }
 
