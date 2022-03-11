@@ -1,4 +1,5 @@
 const mainContainer = document.getElementById('mainContainer');
+const controlsContainer = document.getElementById('controlsContainer');
 const btnContainer = document.getElementById('btnContainer');
 const addBtn = document.getElementById('addBtn');
 const suggestionBtn = document.getElementById('suggestionBtn');
@@ -279,7 +280,7 @@ function buildSummary() {
     buildSummaryCount += 1;
     const summaryDiv = document.createElement('div');
     summaryDiv.setAttribute('id', 'summaryDiv');
-    mainContainer.insertBefore(summaryDiv, mainContainer.firstChild);
+    controlsContainer.insertBefore(summaryDiv, controlsContainer.firstChild);
 
     const summaryTotal = document.createElement('p');
     summaryTotal.innerText = "Total Books in Library: " + myLibrary.length;

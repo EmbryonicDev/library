@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,33 +13,34 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Serif&display=swap" rel="stylesheet">
   <title>Library</title>
 </head>
+
 <body>
   <header>
     <div>
       <img src="./images/bookshelf.svg" alt="">
       <h1>My Library</h1>
     </div>
+    <div id="controlsContainer">
+        <div id="btnContainer">
+          <button id="addBtn">+</button>
+          <button id="suggestionBtn">?</button>
+          <button id="clearAllBtn">-</button>
+        </div>
+        <select id="sortOptions">
+          <option value="">↓↓↓-Sort Options-↓↓↓</option>
+          <option value="sortTitleAz" id="sortTitleAz">Title A-Z</option>
+          <option value="sortTitleZa" id="sortTitleZa">Title Z-A</option>
+          <option value="sortAuthorAz" id="sortAuthorAz">Author A-Z</option>
+          <option value="sortAuthorZa" id="sortAuthorZa">Author Z-A</option>
+          <option value="sortPagesLow" id="sortPagesLow">Page Count ↓↑</option>
+          <option value="sortPagesHigh" id="sortPagesHigh">Page Count ↑↓</option>
+          <option value="sortReadFirst" id="sortReadFirst">Read First</option>
+          <option value="sortUnreadFirst" id="sortUnreadFirst">Unread First</option>
+        </select>
+        <div id="btnMessage"></div>
+    </div>
   </header>
   <main id="mainContainer">
-    <div id="controlsContainer">
-      <div id="btnContainer">
-        <button id="addBtn">+</button>
-        <button id="suggestionBtn">?</button>
-        <button id="clearAllBtn">-</button>
-      </div>
-      <select id="sortOptions">
-        <option value="">↓↓↓-Sort Options-↓↓↓</option>
-        <option value="sortTitleAz" id="sortTitleAz">Title A-Z</option>
-        <option value="sortTitleZa" id="sortTitleZa">Title Z-A</option>
-        <option value="sortAuthorAz" id="sortAuthorAz">Author A-Z</option>
-        <option value="sortAuthorZa" id="sortAuthorZa">Author Z-A</option>
-        <option value="sortPagesLow" id="sortPagesLow">Page Count ↓↑</option>
-        <option value="sortPagesHigh" id="sortPagesHigh">Page Count ↑↓</option>
-        <option value="sortReadFirst" id="sortReadFirst">Read First</option>
-        <option value="sortUnreadFirst" id="sortUnreadFirst">Unread First</option>
-      </select>
-    </div>
-    <div id="btnMessage"></div>
     <table id="table">
       <tr>
         <th>#</th>
@@ -53,11 +55,14 @@
       <div>Fill in the Form to Save a New Book in Your Library</div>
       <div>
         <label for="title">*Title</label>
-        <input type="text" id="title" name="title" pattern="^(?:((([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-.\s])){1,}(['’,\-\.]){0,1}){2,}(([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-. ]))*(([ ]+){0,1}(((([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-\.\s])){1,})(['’\-,\.]){0,1}){2,}((([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-\.\s])){2,})?)*){0,32}$" required>
+        <input type="text" id="title" name="title"
+          pattern="^(?:((([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-.\s])){1,}(['’,\-\.]){0,1}){2,}(([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-. ]))*(([ ]+){0,1}(((([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-\.\s])){1,})(['’\-,\.]){0,1}){2,}((([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-\.\s])){2,})?)*){0,32}$"
+          required>
       </div>
       <div>
         <label for="author">Author</label>
-        <input type="text" id="author" name="author" pattern="^(?:((([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-.\s])){1,}(['’,\-\.]){0,1}){2,}(([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-. ]))*(([ ]+){0,1}(((([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-\.\s])){1,})(['’\-,\.]){0,1}){2,}((([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-\.\s])){2,})?)*){0,100}$">
+        <input type="text" id="author" name="author"
+          pattern="^(?:((([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-.\s])){1,}(['’,\-\.]){0,1}){2,}(([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-. ]))*(([ ]+){0,1}(((([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-\.\s])){1,})(['’\-,\.]){0,1}){2,}((([^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]'’,\-\.\s])){2,})?)*){0,100}$">
       </div>
       <div>
         <label for="pages">Pages</label>
@@ -80,6 +85,7 @@
     </script>
     <span><img src="./images/tree-logo.svg" alt=""></span>
   </footer>
-  
+
 </body>
+
 </html>
