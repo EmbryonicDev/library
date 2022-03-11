@@ -17,6 +17,7 @@ body  {
   flex-direction: column;
   background-color: var(--colorSlate100);
 }
+
 header  {
   background-color: var(--colorSlate500);
   box-shadow: 0 6px 2px -2px rgba(0, 0, 0, 0.6);
