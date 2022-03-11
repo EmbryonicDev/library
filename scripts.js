@@ -59,6 +59,8 @@ function hideSortOptions() {
 }
 
 function addBookToLibrary() {
+  summaryDiv.style.visibility = 'visible';
+  summaryDiv.style.position = 'relative';
   newBook = new book(title.value, author.value, pages.value, formCheckbox.value);
   myLibrary.push(newBook);
   firstTableBuild();
@@ -70,7 +72,11 @@ function deleteBook() {
   randomBookArray.splice(bookTag, 1);
   localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
   localStorage.setItem("randomBookArray", JSON.stringify(randomBookArray));
-  if (myLibrary.length < 1) firstTableBuild();
+  if (myLibrary.length < 1) {
+    firstTableBuild();
+    summaryDiv.style.visibility = 'hidden';
+    summaryDiv.style.position = 'absolute';
+  } 
   resetBookTag();
   resetBookNum();
   hideSortOptions()
@@ -202,6 +208,8 @@ function clearForm() {
 }
 
 function addDummyBooks() {
+  summaryDiv.style.visibility = 'visible';
+  summaryDiv.style.position = 'relative';
   let dummyArray = [];
   let arrayLength = randomBookArray.length;
   dummyArray.push(new book('To Kill a Mockingbird', 'Harper Lee', '281', 'no'));
