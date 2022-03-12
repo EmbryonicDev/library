@@ -158,7 +158,7 @@ form  {
   grid-template-columns: auto minmax(0, 1fr);
   grid-auto-flow: column;
   justify-content: center;
-  gap: 15px;
+  gap: 30px;
   grid-column: 2;
 }
 
