@@ -294,7 +294,7 @@ function buildSummary() {
     controlsContainer.insertBefore(summaryDiv, controlsContainer.firstChild);
 
     const summaryTotal = document.createElement('p');
-    summaryTotal.innerText = "Total Books in Library: " + myLibrary.length;
+    summaryTotal.innerText = "Books in Library: " + myLibrary.length;
     summaryTotal.setAttribute('id', 'summaryTotal');
     summaryDiv.append(summaryTotal);
 
@@ -311,7 +311,7 @@ function buildSummary() {
     const summaryTotal = document.getElementById('summaryTotal');
     const summaryRead = document.getElementById('summaryRead');
     const summaryUnread = document.getElementById('summaryUnread');
-    summaryTotal.innerText = "Total Books in Library: " + myLibrary.length;
+    summaryTotal.innerText = "Books in Library: " + myLibrary.length;
     summaryRead.innerText = "Books Read: " + totalRead;
     summaryUnread.innerText = "Books Unread: " + totalUnread;
   }
