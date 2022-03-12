@@ -166,7 +166,7 @@ form  {
   display: grid;
   grid-column: 2;
   grid-auto-flow: column;
-  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-columns: max-content;
   grid-template-rows: repeat(2, max-content);
   justify-self: start;
   gap: 5px 5px;
