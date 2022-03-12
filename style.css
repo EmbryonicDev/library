@@ -98,7 +98,7 @@ main  {
 #table tr:first-of-type {
   position: -webkit-sticky;
   position: sticky;
-  top: 100px;
+  top: 88px;
 }
 
 td, th {
