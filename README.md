@@ -17,6 +17,7 @@ Buttons:
  - Add a single new book
  - Add 20 suggested books, max 5 at a time
  - Clear all books from library
+ - Delete a single book
 
 Functions:
  - Sort by: 
