@@ -294,7 +294,7 @@ function buildSummary() {
     controlsContainer.insertBefore(summaryDiv, controlsContainer.firstChild);
 
     const summaryTotal = document.createElement('p');
-    summaryTotal.innerText = "Total Books in Library: " + myLibrary.length;
+    summaryTotal.innerText = "Books in Library: " + myLibrary.length;
     summaryTotal.setAttribute('id', 'summaryTotal');
     summaryDiv.append(summaryTotal);
 
