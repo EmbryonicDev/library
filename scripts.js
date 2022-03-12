@@ -61,11 +61,11 @@ function hideSortOptions() {
 }
 
 function addBookToLibrary() {
-  summaryDiv.style.visibility = 'visible';
-  summaryDiv.style.position = 'relative';
   newBook = new book(title.value, author.value, pages.value, formCheckbox.value);
   myLibrary.push(newBook);
   firstTableBuild();
+  summaryDiv.style.visibility = 'visible';
+  summaryDiv.style.position = 'relative';
 }
 
 function deleteBook() {
@@ -80,7 +80,7 @@ function deleteBook() {
     summaryDiv.style.visibility = 'hidden';
     summaryDiv.style.position = 'absolute';
     btnContainer.style.width = "180px";
-  } 
+  }
   resetBookTag();
   resetBookNum();
   hideSortOptions()
@@ -341,12 +341,12 @@ suggestionBtn.addEventListener('click', (e) => {
 
 suggestionBtn.addEventListener('mouseover', (e) => {
   btnMessage.style.visibility = "visible";
-  if(randomBookArray.length < 15) btnMessage.innerText = "Add 5 Book Suggestions";
-  if(randomBookArray.length == 16) btnMessage.innerText = "Add 4 Book Suggestions";
-  if(randomBookArray.length == 17) btnMessage.innerText = "Add 3 Book Suggestions";
-  if(randomBookArray.length == 18) btnMessage.innerText = "Add 2 Book Suggestions";
-  if(randomBookArray.length == 19) btnMessage.innerText = "Add 1 Book Suggestions";
-  if(randomBookArray.length == 20) btnMessage.innerText = "Only 20 Book Suggestions Available";
+  if (randomBookArray.length < 15) btnMessage.innerText = "Add 5 Book Suggestions";
+  if (randomBookArray.length == 16) btnMessage.innerText = "Add 4 Book Suggestions";
+  if (randomBookArray.length == 17) btnMessage.innerText = "Add 3 Book Suggestions";
+  if (randomBookArray.length == 18) btnMessage.innerText = "Add 2 Book Suggestions";
+  if (randomBookArray.length == 19) btnMessage.innerText = "Add 1 Book Suggestions";
+  if (randomBookArray.length == 20) btnMessage.innerText = "Only 20 Book Suggestions Available";
 })
 
 suggestionBtn.addEventListener('mouseout', (e) => {
@@ -384,7 +384,7 @@ form.addEventListener('submit', (e) => {
   function titleCase(str) {
     str = str.toLowerCase().split(' ');
     for (i = 0; i < str.length; i++) {
-      str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1); 
+      str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1);
     }
     titleCaseAnswer = str.join(' ');
     return str.join(' ');
