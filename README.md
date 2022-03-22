@@ -30,4 +30,3 @@ Storage:
  - Data added on the page is saved to _LocalStorage_ & will only be deleted when: 
     - The _Clear All_ button is used
     - Browser specific instructions are followed to clear the browser's _LocalStorage_
-    - 
