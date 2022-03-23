@@ -87,7 +87,7 @@ function deleteBook() {
   buildSummary();
 }
 
-// Resets each table row's "index" (data-book-tagk)
+// Resets each table row's "index" (data-book-tag)
 function resetBookTag() {
   for (i = 0; i < myLibrary.length; i++) {
     let tableRow = table.rows[i + 1];
