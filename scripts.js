@@ -326,6 +326,12 @@ function toLocalStorage() {
   localStorage.setItem("randomBookArray", JSON.stringify(randomBookArray));
 }
 
+// Display button function on hover
+function buttonsHover(visibleOrHidden, innerText) {
+  btnMessage.style.visibility = visibleOrHidden;
+  btnMessage.innerText = innerText;
+}
+
 // Event listeners 
 // Add new book
 addBtn.addEventListener('click', () => {
@@ -333,14 +339,12 @@ addBtn.addEventListener('click', () => {
   clearForm();
 })
 
-addBtn.addEventListener('mouseover', (e) => {
-  btnMessage.style.visibility = "visible";
-  btnMessage.innerText = "Add a New Book";
+addBtn.addEventListener('mouseover', () => {
+  buttonsHover("visible", "Add a New Book");
 })
 
 addBtn.addEventListener('mouseout', (e) => {
-  btnMessage.style.visibility = "hidden";
-  btnMessage.innerText = "";
+  buttonsHover("hidden", "");
 })
 
 // Add up to 20 book suggestions
@@ -349,18 +353,18 @@ suggestionBtn.addEventListener('click', (e) => {
 })
 
 suggestionBtn.addEventListener('mouseover', (e) => {
-  btnMessage.style.visibility = "visible";
-  if (randomBookArray.length < 15) btnMessage.innerText = "Add 5 Book Suggestions";
-  if (randomBookArray.length == 16) btnMessage.innerText = "Add 4 Book Suggestions";
-  if (randomBookArray.length == 17) btnMessage.innerText = "Add 3 Book Suggestions";
-  if (randomBookArray.length == 18) btnMessage.innerText = "Add 2 Book Suggestions";
-  if (randomBookArray.length == 19) btnMessage.innerText = "Add 1 Book Suggestions";
-  if (randomBookArray.length == 20) btnMessage.innerText = "Only 20 Book Suggestions Available";
+  let text = ''
+  if (randomBookArray.length < 15) text = "Add 5 Book Suggestions";
+  if (randomBookArray.length == 16) text = "Add 4 Book Suggestions";
+  if (randomBookArray.length == 17) text = "Add 3 Book Suggestions";
+  if (randomBookArray.length == 18) text = "Add 2 Book Suggestions";
+  if (randomBookArray.length == 19) text = "Add 1 Book Suggestions";
+  if (randomBookArray.length == 20) text = "Only 20 Book Suggestions Available";
+  buttonsHover("visible", text);
 })
 
 suggestionBtn.addEventListener('mouseout', (e) => {
-  btnMessage.style.visibility = "hidden";
-  btnMessage.innerText = "";
+  buttonsHover("hidden", "");
 })
 
 clearAllBtn.addEventListener('click', (e) => {
@@ -369,13 +373,11 @@ clearAllBtn.addEventListener('click', (e) => {
 })
 
 clearAllBtn.addEventListener('mouseover', (e) => {
-  btnMessage.style.visibility = "visible";
-  btnMessage.innerText = "Clear all Books";
+  buttonsHover("visible", "Clear All Books");
 })
 
 clearAllBtn.addEventListener('mouseout', (e) => {
-  btnMessage.style.visibility = "hidden";
-  btnMessage.innerText = "";
+  buttonsHover("hidden", "");
 })
 
 // Form cancel button
