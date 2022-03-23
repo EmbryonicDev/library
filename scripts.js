@@ -407,11 +407,3 @@ form.addEventListener('submit', (e) => {
   form.style.visibility = 'hidden';
   addBookToLibrary();
 });
-
-formCheckbox.addEventListener('change', e => {
-  if (e.target.checked) {
-    e.target.value = 'yes';
-  } else {
-    e.target.value = 'no';
-  }
-})
