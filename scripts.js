@@ -24,11 +24,20 @@ let sort = '';
 // localStorage.clear();
 
 // Object constructor
-function book(title, author, pages, read) {
-  this.title = title
-  this.author = author
-  this.pages = pages
-  this.read = read
+// function book(title, author, pages, read) {
+//   this.title = title
+//   this.author = author
+//   this.pages = pages
+//   this.read = read
+// }
+
+class book {
+  constructor(title, author, pages, read) {
+    this.title = title
+    this.author = author
+    this.pages = pages
+    this.read = read
+  }
 }
 
 // Set up myLibrary & hide table if empty
@@ -87,7 +96,7 @@ function deleteBook() {
   buildSummary();
 }
 
-// Resets each table row's "index" (data-book-tagk)
+// Resets each table row's "index" (data-book-tag)
 function resetBookTag() {
   for (i = 0; i < myLibrary.length; i++) {
     let tableRow = table.rows[i + 1];
