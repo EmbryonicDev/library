@@ -81,8 +81,7 @@ function deleteBook() {
   table.deleteRow(bookTag + 1);
   myLibrary.splice(bookTag, 1);
   randomBookArray.splice(bookTag, 1);
-  localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
-  localStorage.setItem("randomBookArray", JSON.stringify(randomBookArray));
+  toLocalStorage();
   // Hide summaryDiv & adjust size for btnMessage to work without disturbing neighbors
   if (myLibrary.length < 1) {
     firstTableBuild();
@@ -149,8 +148,7 @@ function populateTable() {
     }
     cell6.appendChild(button);
 
-    localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
-    localStorage.setItem("randomBookArray", JSON.stringify(randomBookArray));
+    toLocalStorage();
     hideSortOptions();
   }
 }
@@ -187,8 +185,7 @@ sortOptions.addEventListener('change', function () {
       break;
   }
   myLibrary = sorted;
-  localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
-  localStorage.setItem("randomBookArray", JSON.stringify(randomBookArray));
+  toLocalStorage();
   sort = '';
   afterSort();
 });
@@ -268,8 +265,7 @@ function addDummyBooks() {
       randomBookToArrays();
     }
   }
-  localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
-  localStorage.setItem("randomBookArray", JSON.stringify(randomBookArray));
+  toLocalStorage();
   firstTableBuild();
   summaryDiv.style.visibility = 'visible';
   summaryDiv.style.position = 'relative';
@@ -288,8 +284,7 @@ function updateReadStatus() {
     return obj;
   })
   myLibrary = newArr;
-  localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
-  localStorage.setItem("randomBookArray", JSON.stringify(randomBookArray));
+  toLocalStorage();
   buildSummary();
 }
 
@@ -324,6 +319,11 @@ function buildSummary() {
     summaryRead.innerText = "Books Read: " + totalRead;
     summaryUnread.innerText = "Books Unread: " + totalUnread;
   }
+}
+
+function toLocalStorage() {
+  localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+  localStorage.setItem("randomBookArray", JSON.stringify(randomBookArray));
 }
 
 // Event listeners 
