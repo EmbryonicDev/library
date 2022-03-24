@@ -368,7 +368,7 @@ suggestionBtn.addEventListener('click', (e) => {
 
 suggestionBtn.addEventListener('mouseover', (e) => {
   let text = ''
-  if (randomBookArray.length < 15) text = "Add 5 Book Suggestions";
+  if (randomBookArray.length <= 15) text = "Add 5 Book Suggestions";
   if (randomBookArray.length == 16) text = "Add 4 Book Suggestions";
   if (randomBookArray.length == 17) text = "Add 3 Book Suggestions";
   if (randomBookArray.length == 18) text = "Add 2 Book Suggestions";
