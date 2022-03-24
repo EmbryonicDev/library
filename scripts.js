@@ -1,7 +1,6 @@
 const mainContainer = document.getElementById('mainContainer');
 const controlsContainer = document.getElementById('controlsContainer');
 const btnContainer = document.getElementById('btnContainer');
-const addBtn = document.getElementById('addBtn');
 const suggestionBtn = document.getElementById('suggestionBtn');
 const sortMainBtn = document.getElementById('sortMainBtn');
 const sortOptions = document.getElementById('sortOptions');
@@ -348,18 +347,18 @@ function buttonsHover(visibleOrHidden, innerText) {
 
 // Event listeners 
 // Add new book
-addBtn.addEventListener('click', () => {
+document.getElementById('addBtn').onclick = () => {
   form.style.visibility = "visible";
   clearForm();
-})
+}
 
-addBtn.addEventListener('mouseover', () => {
+document.getElementById('addBtn').onmouseover = () => {
   buttonsHover("visible", "Add a New Book");
-})
+}
 
-addBtn.addEventListener('mouseout', (e) => {
+document.getElementById('addBtn').onmouseout = () => {
   buttonsHover("hidden", "");
-})
+}
 
 // Add up to 20 book suggestions
 suggestionBtn.addEventListener('click', (e) => {
