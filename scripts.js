@@ -1,6 +1,5 @@
 const mainContainer = document.getElementById('mainContainer');
 const controlsContainer = document.getElementById('controlsContainer');
-const suggestionBtn = document.getElementById('suggestionBtn');
 const sortMainBtn = document.getElementById('sortMainBtn');
 const sortOptions = document.getElementById('sortOptions');
 const clearAllBtn = document.getElementById('clearAllBtn');
@@ -358,11 +357,11 @@ document.getElementById('addBtn').onmouseout = () => {
 }
 
 // Add up to 20 book suggestions
-suggestionBtn.addEventListener('click', (e) => {
+document.getElementById('suggestionBtn').onclick = () => {
   addBookSuggestions();
-})
+}
 
-suggestionBtn.addEventListener('mouseover', (e) => {
+document.getElementById('suggestionBtn').onmouseover = () => {
   let text = ''
   if (suggestedBooksCounter <= 15) text = "Add 5 Book Suggestions";
   if (suggestedBooksCounter == 16) text = "Add 4 Book Suggestions";
@@ -371,11 +370,11 @@ suggestionBtn.addEventListener('mouseover', (e) => {
   if (suggestedBooksCounter == 19) text = "Add 1 Book Suggestions";
   if (suggestedBooksCounter == 20) text = "Only 20 Book Suggestions Available";
   buttonsHover("visible", text);
-})
+}
 
-suggestionBtn.addEventListener('mouseout', (e) => {
+document.getElementById('suggestionBtn').onmouseout = () => {
   buttonsHover("hidden", "");
-})
+}
 
 clearAllBtn.addEventListener('click', (e) => {
   localStorage.clear();
