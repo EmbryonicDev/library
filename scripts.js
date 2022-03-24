@@ -251,20 +251,20 @@ function addBookSuggestions() {
     // Get all titles from array & save the newest addition
     let bookTitles = randomBookArray.map(randomBookArray => randomBookArray.title)
     let newestBookTitle = bookTitles[bookTitles.length - 1].toString();
-    
+
     // compare newest addition title to books in array
     let index = randomBookArray.map(object => object.title).indexOf(newestBookTitle);
     // Alternative method to above ↓ ↓ ↓
     // let index = randomBookArray.findIndex(object => {
     //   return object.title === newestBookTitle;
     // })
-    
-  // Delete newest addition if duplicate is found
-  if (index < bookTitles.length - 1) {
+
+    // Delete newest addition if duplicate is found
+    if (index < bookTitles.length - 1) {
       randomBookArray.pop();
       bookTitles.pop();
       myLibrary.pop();
-    } 
+    }
   }
 
   // Add 5 suggested books while < 15 suggested books are in myLibrary
