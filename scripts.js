@@ -217,7 +217,7 @@ function clearForm() {
   formCheckbox.value = 'yes';
 }
 
-function addDummyBooks() {
+function addBookSuggestions() {
   let dummyArray = [];
   let arrayLength = randomBookArray.length;
   dummyArray.push(new book('To Kill a Mockingbird', 'Harper Lee', '281', 'no'));
@@ -349,7 +349,7 @@ addBtn.addEventListener('mouseout', (e) => {
 
 // Add up to 20 book suggestions
 suggestionBtn.addEventListener('click', (e) => {
-  addDummyBooks();
+  addBookSuggestions();
 })
 
 suggestionBtn.addEventListener('mouseover', (e) => {
