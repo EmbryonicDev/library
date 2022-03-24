@@ -247,8 +247,13 @@ function addBookSuggestions() {
 
   function randomBookToArrays() {
     let randomBook = dummyArray[Math.floor(Math.random() * dummyArray.length)];
+
     randomBookArray.push(randomBook);
     myLibrary.push(randomBookArray[randomBookArray.length -1]);
+    let bookTitles = randomBookArray.map(randomBookArray => randomBookArray.title)
+    let newestBookTitle = bookTitles[bookTitles.length -1].toString();
+    console.log(newestBookTitle);
+
     // randomBookArray = noDuplicates(randomBookArray, "title");
     // myLibrary = noDuplicates(myLibrary, "title");
   }
