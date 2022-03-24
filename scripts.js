@@ -1,14 +1,3 @@
-const mainContainer = document.getElementById('mainContainer');
-const controlsContainer = document.getElementById('controlsContainer');
-const sortOptions = document.getElementById('sortOptions');
-const clearAllBtn = document.getElementById('clearAllBtn');
-const btnMessage = document.getElementById('btnMessage');
-const form = document.getElementById('form');
-const table = document.getElementById('table');
-const cancelBtn = document.getElementById('cancelBtn');
-const formCheckbox = document.getElementById('formCheckbox');
-const tableCheckbox = document.querySelector('.tableCheckbox');
-
 let myLibrary = JSON.parse(localStorage.getItem("myLibrary")) || [];
 let suggestedBooksCounter = JSON.parse(localStorage.getItem("suggestedBooksCounter")) || 0;
 let newBook = '';
@@ -150,6 +139,7 @@ function populateTable() {
 }
 
 // Sort table contents
+
 sortOptions.addEventListener('change', function () {
   let sorted = '';
   let tempLibrary = myLibrary;
