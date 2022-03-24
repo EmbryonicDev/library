@@ -241,16 +241,16 @@ function addBookSuggestions() {
   dummyArray.push(new book('Frankenstein', 'Mary Shelley', '280', 'no'));
   dummyArray.push(new book('Things Fall Apart', 'Chinua Achebe', '224', 'no'));
 
-  function noDuplicates(checkArray, key) {
-    return [...new Map(checkArray.map(item => [item[key], item])).values()];
-  }
+  // function noDuplicates(checkArray, key) {
+  //   return [...new Map(checkArray.map(item => [item[key], item])).values()];
+  // }
 
   function randomBookToArrays() {
     let randomBook = dummyArray[Math.floor(Math.random() * dummyArray.length)];
     randomBookArray.push(randomBook);
-    myLibrary.push(...randomBookArray);
-    randomBookArray = noDuplicates(randomBookArray, "title");
-    myLibrary = noDuplicates(myLibrary, "title");
+    myLibrary.push(randomBookArray[randomBookArray.length -1]);
+    // randomBookArray = noDuplicates(randomBookArray, "title");
+    // myLibrary = noDuplicates(myLibrary, "title");
   }
 
   // Add 5 suggested books while < 15 suggested books are in myLibrary
