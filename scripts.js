@@ -217,7 +217,7 @@ function clearForm() {
   formCheckbox.value = 'yes';
 }
 
-function addDummyBooks() {
+function addBookSuggestions() {
   let dummyArray = [];
   let arrayLength = randomBookArray.length;
   dummyArray.push(new book('To Kill a Mockingbird', 'Harper Lee', '281', 'no'));
@@ -241,16 +241,30 @@ function addDummyBooks() {
   dummyArray.push(new book('Frankenstein', 'Mary Shelley', '280', 'no'));
   dummyArray.push(new book('Things Fall Apart', 'Chinua Achebe', '224', 'no'));
 
-  function noDuplicates(checkArray, key) {
-    return [...new Map(checkArray.map(item => [item[key], item])).values()];
-  }
-
   function randomBookToArrays() {
+
+    // Get random book from dummyArray & push to myLibrary & randomBookArray
     let randomBook = dummyArray[Math.floor(Math.random() * dummyArray.length)];
     randomBookArray.push(randomBook);
-    myLibrary.push(...randomBookArray);
-    randomBookArray = noDuplicates(randomBookArray, "title");
-    myLibrary = noDuplicates(myLibrary, "title");
+    myLibrary.push(randomBook);
+
+    // Get all titles from array & save the newest addition
+    let bookTitles = randomBookArray.map(randomBookArray => randomBookArray.title)
+    let newestBookTitle = bookTitles[bookTitles.length - 1].toString();
+    
+    // compare newest addition title to books in array
+    let index = randomBookArray.map(object => object.title).indexOf(newestBookTitle);
+    // Alternative method to above ↓ ↓ ↓
+    // let index = randomBookArray.findIndex(object => {
+    //   return object.title === newestBookTitle;
+    // })
+    
+  // Delete newest addition if duplicate is found
+  if (index < bookTitles.length - 1) {
+      randomBookArray.pop();
+      bookTitles.pop();
+      myLibrary.pop();
+    } 
   }
 
   // Add 5 suggested books while < 15 suggested books are in myLibrary
@@ -349,12 +363,12 @@ addBtn.addEventListener('mouseout', (e) => {
 
 // Add up to 20 book suggestions
 suggestionBtn.addEventListener('click', (e) => {
-  addDummyBooks();
+  addBookSuggestions();
 })
 
 suggestionBtn.addEventListener('mouseover', (e) => {
   let text = ''
-  if (randomBookArray.length < 15) text = "Add 5 Book Suggestions";
+  if (randomBookArray.length <= 15) text = "Add 5 Book Suggestions";
   if (randomBookArray.length == 16) text = "Add 4 Book Suggestions";
   if (randomBookArray.length == 17) text = "Add 3 Book Suggestions";
   if (randomBookArray.length == 18) text = "Add 2 Book Suggestions";
@@ -407,11 +421,3 @@ form.addEventListener('submit', (e) => {
   form.style.visibility = 'hidden';
   addBookToLibrary();
 });
-
-formCheckbox.addEventListener('change', e => {
-  if (e.target.checked) {
-    e.target.value = 'yes';
-  } else {
-    e.target.value = 'no';
-  }
-})
