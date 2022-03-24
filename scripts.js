@@ -1,6 +1,5 @@
 const mainContainer = document.getElementById('mainContainer');
 const controlsContainer = document.getElementById('controlsContainer');
-const sortMainBtn = document.getElementById('sortMainBtn');
 const sortOptions = document.getElementById('sortOptions');
 const clearAllBtn = document.getElementById('clearAllBtn');
 const btnMessage = document.getElementById('btnMessage');
