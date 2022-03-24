@@ -14,7 +14,7 @@ const formCheckbox = document.getElementById('formCheckbox');
 const tableCheckbox = document.querySelector('.tableCheckbox');
 
 let myLibrary = JSON.parse(localStorage.getItem("myLibrary")) || [];
-let randomBookArray = JSON.parse(localStorage.getItem("randomBookArray")) || [];
+let suggestedBooksCounter = JSON.parse(localStorage.getItem("suggestedBooksCounter")) || 0;
 let newBook = '';
 let totalRead = 0;
 let totalUnread = 0;
@@ -80,7 +80,7 @@ function addBookToLibrary() {
 function deleteBook() {
   table.deleteRow(bookTag + 1);
   myLibrary.splice(bookTag, 1);
-  randomBookArray.splice(bookTag, 1);
+  suggestedBooksCounter--;
   toLocalStorage();
   // Hide summaryDiv & adjust size for btnMessage to work without disturbing neighbors
   if (myLibrary.length < 1) {
@@ -219,7 +219,7 @@ function clearForm() {
 
 function addBookSuggestions() {
   let dummyArray = [];
-  let arrayLength = randomBookArray.length;
+  let arrayLength = suggestedBooksCounter;
   dummyArray.push(new book('To Kill a Mockingbird', 'Harper Lee', '281', 'no'));
   dummyArray.push(new book('The Great Gatsby', ' F. Scott Fitzgerald', '208', 'no'));
   dummyArray.push(new book('Ulysses', 'James Joyce', '730', 'no'));
@@ -243,39 +243,39 @@ function addBookSuggestions() {
 
   function randomBookToArrays() {
 
-    // Get random book from dummyArray & push to myLibrary & randomBookArray
+    // Get random book from dummyArray & push to myLibrary
     let randomBook = dummyArray[Math.floor(Math.random() * dummyArray.length)];
-    randomBookArray.push(randomBook);
+    suggestedBooksCounter++;
     myLibrary.push(randomBook);
 
     // Get all titles from array & save the newest addition
-    let bookTitles = randomBookArray.map(randomBookArray => randomBookArray.title)
+    let bookTitles = myLibrary.map(myLibrary => myLibrary.title)
     let newestBookTitle = bookTitles[bookTitles.length - 1].toString();
 
     // compare newest addition title to books in array
-    let index = randomBookArray.map(object => object.title).indexOf(newestBookTitle);
+    let index = myLibrary.map(object => object.title).indexOf(newestBookTitle);
     // Alternative method to above ↓ ↓ ↓
-    // let index = randomBookArray.findIndex(object => {
+    // let index = myLibrary.findIndex(object => {
     //   return object.title === newestBookTitle;
     // })
 
     // Delete newest addition if duplicate is found
     if (index < bookTitles.length - 1) {
-      randomBookArray.pop();
+      suggestedBooksCounter--;
       bookTitles.pop();
       myLibrary.pop();
     }
   }
 
   // Add 5 suggested books while < 15 suggested books are in myLibrary
-  while (arrayLength <= 15 && randomBookArray.length < arrayLength + 5) {
+  while (arrayLength <= 15 && suggestedBooksCounter < arrayLength + 5) {
     randomBookToArrays()
   }
 
   // When 15+ suggested books are in myLibrary
   // Add up to 4 books to make suggested books in myLibrary = 20 
   if (arrayLength > 14) {
-    while (randomBookArray.length < 20) {
+    while (suggestedBooksCounter < 20) {
       randomBookToArrays();
     }
   }
@@ -337,7 +337,7 @@ function buildSummary() {
 
 function toLocalStorage() {
   localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
-  localStorage.setItem("randomBookArray", JSON.stringify(randomBookArray));
+  localStorage.setItem("suggestedBooksCounter", JSON.stringify(suggestedBooksCounter));
 }
 
 // Display button function on hover
@@ -368,12 +368,12 @@ suggestionBtn.addEventListener('click', (e) => {
 
 suggestionBtn.addEventListener('mouseover', (e) => {
   let text = ''
-  if (randomBookArray.length <= 15) text = "Add 5 Book Suggestions";
-  if (randomBookArray.length == 16) text = "Add 4 Book Suggestions";
-  if (randomBookArray.length == 17) text = "Add 3 Book Suggestions";
-  if (randomBookArray.length == 18) text = "Add 2 Book Suggestions";
-  if (randomBookArray.length == 19) text = "Add 1 Book Suggestions";
-  if (randomBookArray.length == 20) text = "Only 20 Book Suggestions Available";
+  if (suggestedBooksCounter <= 15) text = "Add 5 Book Suggestions";
+  if (suggestedBooksCounter == 16) text = "Add 4 Book Suggestions";
+  if (suggestedBooksCounter == 17) text = "Add 3 Book Suggestions";
+  if (suggestedBooksCounter == 18) text = "Add 2 Book Suggestions";
+  if (suggestedBooksCounter == 19) text = "Add 1 Book Suggestions";
+  if (suggestedBooksCounter == 20) text = "Only 20 Book Suggestions Available";
   buttonsHover("visible", text);
 })
 
