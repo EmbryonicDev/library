@@ -1,6 +1,5 @@
 const mainContainer = document.getElementById('mainContainer');
 const controlsContainer = document.getElementById('controlsContainer');
-const btnContainer = document.getElementById('btnContainer');
 const suggestionBtn = document.getElementById('suggestionBtn');
 const sortMainBtn = document.getElementById('sortMainBtn');
 const sortOptions = document.getElementById('sortOptions');
@@ -44,7 +43,7 @@ function firstTableBuild() {
   if (myLibrary.length > 0) {
     populateTable();
     buildSummary();
-    btnContainer.style.width = "max-content";
+    document.getElementById('btnContainer').style.width = "max-content";
     table.style.visibility = 'visible';
     clearAllBtn.style.visibility = 'visible';
     clearAllBtn.style.position = 'relative';
@@ -52,7 +51,7 @@ function firstTableBuild() {
     table.style.visibility = 'hidden';
     clearAllBtn.style.visibility = 'hidden';
     clearAllBtn.style.position = 'absolute';
-    btnContainer.style.width = "180px";
+    document.getElementById('btnContainer').style.width = "180px";
   }
   hideSortOptions();
 }
@@ -86,7 +85,7 @@ function deleteBook() {
     firstTableBuild();
     summaryDiv.style.visibility = 'hidden';
     summaryDiv.style.position = 'absolute';
-    btnContainer.style.width = "180px";
+    document.getElementById('btnContainer').style.width = "180px";
   }
   resetBookTag();
   resetBookNum();
@@ -351,11 +350,9 @@ document.getElementById('addBtn').onclick = () => {
   form.style.visibility = "visible";
   clearForm();
 }
-
 document.getElementById('addBtn').onmouseover = () => {
   buttonsHover("visible", "Add a New Book");
 }
-
 document.getElementById('addBtn').onmouseout = () => {
   buttonsHover("hidden", "");
 }
