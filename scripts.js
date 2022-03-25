@@ -29,7 +29,7 @@ function firstTableBuild() {
   if (myLibrary.length > 0) {
     populateTable();
     buildSummary();
-    document.getElementById('btnContainer').style.width = "max-content";
+    btnContainer.style.width = "max-content";
     table.style.visibility = 'visible';
     clearAllBtn.style.visibility = 'visible';
     clearAllBtn.style.position = 'relative';
@@ -37,7 +37,7 @@ function firstTableBuild() {
     table.style.visibility = 'hidden';
     clearAllBtn.style.visibility = 'hidden';
     clearAllBtn.style.position = 'absolute';
-    document.getElementById('btnContainer').style.width = "180px";
+    btnContainer.style.width = "180px";
   }
   hideSortOptions();
 }
@@ -71,7 +71,7 @@ function deleteBook() {
     firstTableBuild();
     summaryDiv.style.visibility = 'hidden';
     summaryDiv.style.position = 'absolute';
-    document.getElementById('btnContainer').style.width = "180px";
+    btnContainer.style.width = "180px";
   }
   resetBookTag();
   resetBookNum();
@@ -176,7 +176,6 @@ sortOptions.addEventListener('change', function () {
 
 function afterSort() {
   sortOptions.options[0].selected = 'selected';
-  checkbox = document.getElementsByClassName('checkbox');
   for (i = 0; i < myLibrary.length; i++) {
     let cell1 = table.rows[i + 1].cells[1];
     let cell2 = table.rows[i + 1].cells[2];
@@ -332,23 +331,23 @@ function buttonsHover(visibleOrHidden, innerText) {
 
 // Event listeners 
 // Add new book
-document.getElementById('addBtn').onclick = () => {
+addBtn.onclick = () => {
   form.style.visibility = "visible";
   clearForm();
 }
-document.getElementById('addBtn').onmouseover = () => {
+addBtn.onmouseover = () => {
   buttonsHover("visible", "Add a New Book");
 }
-document.getElementById('addBtn').onmouseout = () => {
+addBtn.onmouseout = () => {
   buttonsHover("hidden", "");
 }
 
 // Add up to 20 book suggestions
-document.getElementById('suggestionBtn').onclick = () => {
+suggestionBtn.onclick = () => {
   addBookSuggestions();
 }
 
-document.getElementById('suggestionBtn').onmouseover = () => {
+suggestionBtn.onmouseover = () => {
   let text = ''
   if (suggestedBooksCounter <= 15) text = "Add 5 Book Suggestions";
   if (suggestedBooksCounter == 16) text = "Add 4 Book Suggestions";
@@ -359,7 +358,7 @@ document.getElementById('suggestionBtn').onmouseover = () => {
   buttonsHover("visible", text);
 }
 
-document.getElementById('suggestionBtn').onmouseout = () => {
+suggestionBtn.onmouseout = () => {
   buttonsHover("hidden", "");
 }
 
