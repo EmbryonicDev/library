@@ -140,36 +140,36 @@ function populateTable() {
 // Sort table contents
 
 sortOptions.addEventListener('change', function () {
-  let sorted = '';
+  let sortedArray = '';
   let tempLibrary = myLibrary;
   myLibrary = [];
   switch (this.value) {
     case 'sortTitleAz':
-      sorted = tempLibrary.sort((a, b) => a.title > b.title ? 1 : -1);
+      sortedArray = tempLibrary.sort((a, b) => a.title > b.title ? 1 : -1);
       break;
     case 'sortTitleZa':
-      sorted = tempLibrary.sort((a, b) => a.title > b.title ? -1 : 1);
+      sortedArray = tempLibrary.sort((a, b) => a.title > b.title ? -1 : 1);
       break;
     case 'sortAuthorAz':
-      sorted = tempLibrary.sort((a, b) => a.author > b.author ? 1 : -1);
+      sortedArray = tempLibrary.sort((a, b) => a.author > b.author ? 1 : -1);
       break;
     case 'sortAuthorZa':
-      sorted = tempLibrary.sort((a, b) => a.author > b.author ? -1 : 1);
+      sortedArray = tempLibrary.sort((a, b) => a.author > b.author ? -1 : 1);
       break;
     case 'sortPagesLow':
-      sorted = tempLibrary.sort((a, b) => a.pages - b.pages);
+      sortedArray = tempLibrary.sort((a, b) => a.pages - b.pages);
       break;
     case 'sortPagesHigh':
-      sorted = tempLibrary.sort((a, b) => b.pages - a.pages);
+      sortedArray = tempLibrary.sort((a, b) => b.pages - a.pages);
       break;
     case 'sortReadFirst':
-      sorted = tempLibrary.sort((a, b) => a.read > b.read ? -1 : 1);
+      sortedArray = tempLibrary.sort((a, b) => a.read > b.read ? -1 : 1);
       break;
     case 'sortUnreadFirst':
-      sorted = tempLibrary.sort((a, b) => a.read > b.read ? 1 : -1);
+      sortedArray = tempLibrary.sort((a, b) => a.read > b.read ? 1 : -1);
       break;
   }
-  myLibrary = sorted;
+  myLibrary = sortedArray;
   toLocalStorage();
   afterSort();
 });
