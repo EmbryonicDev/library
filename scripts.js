@@ -4,7 +4,6 @@ let newBook = '';
 let totalRead = 0;
 let totalUnread = 0;
 let buildSummaryCount = '';
-let sort = '';
 
 // localStorage.clear();
 
@@ -172,7 +171,6 @@ sortOptions.addEventListener('change', function () {
   }
   myLibrary = sorted;
   toLocalStorage();
-  sort = '';
   afterSort();
 });
 
