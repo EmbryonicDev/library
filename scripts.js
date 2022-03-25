@@ -31,6 +31,7 @@ function firstTableBuild() {
     buildSummary();
     btnContainer.style.width = "max-content";
     table.style.visibility = 'visible';
+    table.style.minWidth = '70%';
     clearAllBtn.style.visibility = 'visible';
     clearAllBtn.style.position = 'relative';
   } else if (myLibrary.length == 0) {
